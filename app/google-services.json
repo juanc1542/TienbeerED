@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "877047229441",
+    "firebase_url": "https://tienbeer-febef.firebaseio.com",
+    "project_id": "tienbeer-febef",
+    "storage_bucket": "tienbeer-febef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877047229441:android:81ad451325ca66ec982400",
+        "android_client_info": {
+          "package_name": "com.example.tienbeerv10"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877047229441-34mn9p8q6gd06l8sgmbgrnrlisnf640v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp1nKUDzl_ksl9X9kuA30psdtwmggj6l0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877047229441-34mn9p8q6gd06l8sgmbgrnrlisnf640v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877047229441:android:64569e58c6b9b7f9982400",
+        "android_client_info": {
+          "package_name": "com.example.tienbeerv20"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877047229441-34mn9p8q6gd06l8sgmbgrnrlisnf640v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp1nKUDzl_ksl9X9kuA30psdtwmggj6l0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877047229441-34mn9p8q6gd06l8sgmbgrnrlisnf640v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
