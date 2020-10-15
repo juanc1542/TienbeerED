@@ -27,5 +27,7 @@ public class SixPackGenerator {
     }
 
 
-    public
+    public void Repetidas(){}
+
+    public void NoRepetidas(){}
 }
