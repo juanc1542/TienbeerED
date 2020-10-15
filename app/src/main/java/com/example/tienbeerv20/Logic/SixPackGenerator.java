@@ -25,4 +25,9 @@ public class SixPackGenerator {
     public void setSeleccionClon(ArrayList<Cerveza> seleccionClon) {
         this.seleccionClon = seleccionClon;
     }
+
+
+    public void Repetidas(){}
+
+    public void NoRepetidas(){}
 }
