@@ -10,4 +10,8 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="main_menu">MAIN MENU</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="dev_op">DEV OP</string>
+    <string name="a_adir_cervezas">Añadir Cervezas</string>
 </resources>

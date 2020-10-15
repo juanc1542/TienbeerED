@@ -22,4 +22,16 @@
         android:name="com.example.tienbeerv20.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_favoritos"
+        android:name="com.example.tienbeerv20.ui.favoritos.FavoritosFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favoritos" />
+
+    <fragment
+        android:id="@+id/nav_anadir"
+        android:name="com.example.tienbeerv20.ui.anadir.AnadirFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_anadir" />
 </navigation>
