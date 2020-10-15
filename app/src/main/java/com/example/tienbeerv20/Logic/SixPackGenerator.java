@@ -30,7 +30,8 @@ public class SixPackGenerator {
         this.seleccionClon = seleccionClon;
     }
 
-
+    //A este metodo le entra el segundo filtro y la preferencia del usuario para este filtro
+    //Borra todas las cervezas que no satisfacen la preferencia del usuario
     public void filter(String filtro, String preferencia){
         Iterator<Cerveza> itr = seleccionClon.iterator();
         if (filtro.equals("nacionalidad")){
@@ -63,12 +64,4 @@ public class SixPackGenerator {
             }
         }
     }
-
-
-
-//    if (sixPack.pack < 6){
-//        if (filtro.repetidas == true){
-//
-//        }
-//    }
 }
