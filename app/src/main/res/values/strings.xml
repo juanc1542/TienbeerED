@@ -14,4 +14,6 @@
     <string name="favoritos">Favoritos</string>
     <string name="dev_op">DEV OP</string>
     <string name="a_adir_cervezas">Añadir Cervezas</string>
+    <string name="favoritosfragment">FavoritosFragment</string>
+    <string name="anadirfragment">AnadirFragment</string>
 </resources>

@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Favoritos"></activity>
-        <activity android:name=".AnadirActivity" />
+        <activity android:name=".ui.ActivitiesUI.Favoritos" />
+        <activity android:name=".ui.ActivitiesUI.AnadirActivity" />
 
         <activity
             android:name=".MainActivity"
