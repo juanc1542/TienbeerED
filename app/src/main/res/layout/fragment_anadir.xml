@@ -8,13 +8,66 @@
     tools:context="ui.anadir.AnadirFragment">
 
     <TextView
-        android:id="@+id/message"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/anadirfragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Nombre"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="51dp" />
 
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="36dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nacionalidad"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="176dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="223dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="% de alcohol"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="277dp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="189dp"
+        android:layout_height="31dp"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="171dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
