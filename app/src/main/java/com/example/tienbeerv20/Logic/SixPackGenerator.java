@@ -1,8 +1,12 @@
 package com.example.tienbeerv20.Logic;
 
+import android.telecom.StatusHints;
+
 import com.example.tienbeerv20.Data.Cerveza;
 
+import java.sql.Struct;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class SixPackGenerator {
     private ArrayList<Cerveza> seleccion;
@@ -25,4 +29,46 @@ public class SixPackGenerator {
     public void setSeleccionClon(ArrayList<Cerveza> seleccionClon) {
         this.seleccionClon = seleccionClon;
     }
+
+
+    public void filter(String filtro, String preferencia){
+        Iterator<Cerveza> itr = seleccionClon.iterator();
+        if (filtro.equals("nacionalidad")){
+            while (itr.hasNext()){
+                String nacionalidadNext = (String)itr.next().getNacionalidad();
+                if(!nacionalidadNext.equals(preferencia)){
+                    itr.remove();
+                }
+            }
+        }if (filtro.equals("precio")){
+            while (itr.hasNext()){
+                String precioNext = (String)itr.next().getPrecio();
+                if(!precioNext.equals(preferencia)){
+                    itr.remove();
+                }
+            }
+        }if (filtro.equals("tipo")){
+            while (itr.hasNext()){
+                String tipoNext = (String)itr.next().getTipo();
+                if(!tipoNext.equals(preferencia)){
+                    itr.remove();
+                }
+            }
+        }if (filtro.equals("alcohol")){
+            while (itr.hasNext()){
+                String alcoholNext = (String)itr.next().getAlcohol();
+                if(!alcoholNext.equals(preferencia)){
+                    itr.remove();
+                }
+            }
+        }
+    }
+
+
+
+//    if (sixPack.pack < 6){
+//        if (filtro.repetidas == true){
+//
+//        }
+//    }
 }
