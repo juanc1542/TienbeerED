@@ -6,15 +6,17 @@ public class Cerveza {
 
     private String nombre;
     private String nacionalidad;
-    private String precio;
+    private int precio;
+    private String rangoPrecio;
     private String tipo;
     private String alcohol;
 
     //Metodo constructor
-    public Cerveza(String Nombre,String Nacionalidad,String Precio, String Tipo, String Alcohol){
+    public Cerveza(String Nombre,String Nacionalidad,int Precio,String rangoPrecio, String Tipo, String Alcohol){
         this.nombre= Nombre;
         this.nacionalidad= Nacionalidad;
         this.precio= Precio;
+        this.rangoPrecio=rangoPrecio;
         this.tipo= Tipo;
         this.alcohol= Alcohol;
     }
@@ -36,8 +38,12 @@ public class Cerveza {
         return nacionalidad;
     }
 
-    public String getPrecio() {
+    public int getPrecio() {
         return precio;
+    }
+
+    public String getRangoPrecio() {
+        return rangoPrecio;
     }
 
     public String getTipo() {
@@ -57,8 +63,12 @@ public class Cerveza {
         this.nacionalidad = nacionalidad;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
+    }
+
+    public void setRangoPrecio(String rangoPrecio) {
+        this.rangoPrecio = rangoPrecio;
     }
 
     public void setTipo(String tipo) {

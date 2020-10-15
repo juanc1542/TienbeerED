@@ -16,4 +16,11 @@
     <string name="a_adir_cervezas">Añadir Cervezas</string>
     <string name="favoritosfragment">FavoritosFragment</string>
     <string name="anadirfragment">AnadirFragment</string>
+    <string name="nacionalidad">Nacionalidad</string>
+    <string name="nombre">Nombre</string>
+    <string name="name">Name</string>
+    <string name="precio">Precio</string>
+    <string name="tipo">Tipo</string>
+    <string name="de_alcohol">% de alcohol</string>
+    <string name="subir">SUBIR</string>
 </resources>

@@ -40,7 +40,7 @@ public class SixPackGenerator {
             }
         }if (filtro.equals("precio")){
             while (itr.hasNext()){
-                String precioNext = (String)itr.next().getPrecio();
+                String precioNext = (String)itr.next().getRangoPrecio();
                 if(!precioNext.equals(preferencia)){
                     itr.remove();
                 }
