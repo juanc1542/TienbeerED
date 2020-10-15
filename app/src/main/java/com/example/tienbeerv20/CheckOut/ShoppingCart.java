@@ -44,7 +44,7 @@ public class ShoppingCart {
 //------------------------------------------------------------------------------------------------------
     public void CheckOut(){
         //Ingreso de los datos para el envío (?)
-        new OrderDetails();
+        //new OrderDetails();
 
 
 
