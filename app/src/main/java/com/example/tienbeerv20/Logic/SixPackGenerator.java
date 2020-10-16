@@ -58,28 +58,29 @@ public abstract class SixPackGenerator {
         if (filtro.equals("nacionalidad")){
             while (itr.hasNext()){
                 String nacionalidadNext = itr.next().getNacionalidad();
-                if(!nacionalidadNext.equals(preferencia)){
+                //comprobar si está ya está en el sixpack
+                if(!nacionalidadNext.equals(preferencia) && this.sixpack.contiene(itr.next())){
                     itr.remove();
                 }
             }
         }if (filtro.equals("precio")){
             while (itr.hasNext()){
                 String precioNext = itr.next().getRangoPrecio();
-                if(!precioNext.equals(preferencia)){
+                if(!precioNext.equals(preferencia) && this.sixpack.contiene(itr.next())){
                     itr.remove();
                 }
             }
         }if (filtro.equals("tipo")){
             while (itr.hasNext()){
                 String tipoNext = itr.next().getTipo();
-                if(!tipoNext.equals(preferencia)){
+                if(!tipoNext.equals(preferencia) && this.sixpack.contiene(itr.next())){
                     itr.remove();
                 }
             }
         }if (filtro.equals("alcohol")){
             while (itr.hasNext()){
                 String alcoholNext = itr.next().getAlcohol();
-                if(!alcoholNext.equals(preferencia)){
+                if(!alcoholNext.equals(preferencia) && this.sixpack.contiene(itr.next())){
                     itr.remove();
                 }
             }

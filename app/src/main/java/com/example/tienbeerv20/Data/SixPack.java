@@ -11,6 +11,15 @@ public class SixPack {
         }
     }
 
+    public boolean contiene(Cerveza cerveza){
+        for(int i=0; i<6;i++){
+            if(cerveza.equals(sixpack[i])){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public int cantidad(){
         return head;
     }
