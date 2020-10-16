@@ -29,6 +29,18 @@ public abstract class SixPackGenerator {
         this.seleccionClon = seleccionClon;
     }
 
+    /*es el método quedebe recibir la lista de cervezas del primer filtro de firebase
+    y el objeto filtro de lo que se halla recibido de input por el usuario en filtros.
+    de este método debe definir el arreglo de cervezas y el clon del arreglo y debe enviarle
+    al método filtro el segundo filtro para que este llene el six pack. Tras comprobar si el
+    sixpack está lleno o no debe regresar el sixpack o enviar el tercer filtro al método filtro
+    para llenar el sixpack y finalmente retornarlo
+     */
+
+    public SixPack generarSixpack(){
+        return sixpack;
+    }
+
     //A este metodo le entra el segundo filtro y la preferencia del usuario para este filtro
     //Borra todas las cervezas que no satisfacen la preferencia del usuario
     public void filter(String filtro, String preferencia){

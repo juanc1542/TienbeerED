@@ -15,11 +15,12 @@ public class SixPack {
         return head==0;
     }
 
-    public void removerCerveza(){
+    //remueve una cerveza específica
+    public void removerCerveza(Cerveza cerveza){
 
     }
 
     public boolean lleno(){
-        return head == 7;
+        return head == 6;
     }
 }
