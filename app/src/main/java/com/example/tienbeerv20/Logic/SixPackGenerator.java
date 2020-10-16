@@ -1,6 +1,7 @@
 package com.example.tienbeerv20.Logic;
 
 import com.example.tienbeerv20.Data.Cerveza;
+import com.example.tienbeerv20.Data.Filtro;
 import com.example.tienbeerv20.Data.SixPack;
 
 import java.util.ArrayList;
@@ -37,11 +38,14 @@ public abstract class SixPackGenerator {
     para llenar el sixpack y finalmente retornarlo
      */
 
-    public SixPack generarSixpack(){
-        //traer los filtros del usuario e instanciar filtro con los filtros y si quiere repetidas
-        //traer lista de firebase y meterla en selección
-        //clonar lista
+    public SixPack generarSixpack(Filtro filtro, ArrayList<Cerveza> primerFiltro){
+        this.setSeleccion(primerFiltro);
         //enviar a filter el segundo filtro
+        int currentP = 1; //variable que determina la posición en la prioridad
+        while(!sixpack.lleno()){
+            this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
+            currentP++;
+        }
         //verificar si el sixpack está lleno
         //si está lleno retornar y si no, clonar la selección y enviar a filter el 3er filtro
         return sixpack;

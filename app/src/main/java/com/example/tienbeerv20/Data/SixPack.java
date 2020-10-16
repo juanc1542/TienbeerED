@@ -11,6 +11,10 @@ public class SixPack {
         }
     }
 
+    public int cantidad(){
+        return head;
+    }
+
     public boolean vacio(){
         return head==0;
     }
