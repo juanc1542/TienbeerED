@@ -1,13 +1,15 @@
 package com.example.tienbeerv20.Logic;
 
 import com.example.tienbeerv20.Data.Cerveza;
+import com.example.tienbeerv20.Data.SixPack;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class SixPackGenerator {
+public abstract class SixPackGenerator {
     private ArrayList<Cerveza> seleccion;
     private ArrayList<Cerveza> seleccionClon;
+    private SixPack sixpack = new SixPack();
 
     public ArrayList<Cerveza> getSeleccion() {
         return seleccion;
@@ -60,5 +62,7 @@ public class SixPackGenerator {
                 }
             }
         }
+
+
     }
 }
