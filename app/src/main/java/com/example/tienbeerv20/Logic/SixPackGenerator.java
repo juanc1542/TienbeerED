@@ -11,6 +11,7 @@ public abstract class SixPackGenerator {
     private ArrayList<Cerveza> seleccion;
     private ArrayList<Cerveza> seleccionClon;
     private SixPack sixpack = new SixPack();
+    private String caso;
 
     public ArrayList<Cerveza> getSeleccion() {
         return seleccion;
@@ -38,16 +39,33 @@ public abstract class SixPackGenerator {
     para llenar el sixpack y finalmente retornarlo
      */
 
-    public SixPack generarSixpack(Filtro filtro, ArrayList<Cerveza> primerFiltro){
+    public SixPack generarSixpack(Filtro filtro, ArrayList<Cerveza> primerFiltro, String caso){
+        this.caso=caso;
         this.setSeleccion(primerFiltro);
         //enviar a filter el segundo filtro
         int currentP = 1; //variable que determina la posición en la prioridad
-        while(!sixpack.lleno()){
-            this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
-            currentP++;
-        }
         //verificar si el sixpack está lleno
         //si está lleno retornar y si no, clonar la selección y enviar a filter el 3er filtro
+        //realiza una acción dependiendo de si
+        switch (caso){
+            //caso de aleatorio hasta llenar
+            case "r":
+                while(!sixpack.lleno()){
+                    this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
+                    this.setSeleccionClon(seleccion);
+                    currentP++;
+                }
+                break;
+            //caso hasta llenar 3
+            case "a":
+                while(sixpack.cantidad()<=3){
+                    this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
+                    this.setSeleccionClon(seleccion);
+                    currentP++;
+                    //llevar a una función para que el usuario escoja las otras 3 y prosiga con el chackout
+                }
+                break;
+        }
         return sixpack;
     }
 
@@ -89,9 +107,19 @@ public abstract class SixPackGenerator {
         //booleano de repetidas temporal mientras se saca de la instanciación del filtro
         boolean repetidas = true;
         if(repetidas){
-            while(!sixpack.lleno()){
-                //mientras que el sixpack no esté lleno, llena con las cervezas que quedaron del 2do filtro
-                sixpack.añadirCerveza(seleccionClon.get((int) Math.floor(Math.random()*seleccionClon.size())));
+            switch(caso){
+                case "r":
+                    while(!sixpack.lleno()){
+                        //mientras que el sixpack no esté lleno, llena con las cervezas que quedaron del 2do filtro
+                        sixpack.añadirCerveza(seleccionClon.get((int) Math.floor(Math.random()*seleccionClon.size())));
+                    }
+                    break;
+                case "a":
+                    while(sixpack.cantidad()<=3){
+                        //mientras que el sixpack no tenga 3, llena con las cervezas que quedaron del 2do filtro
+                        sixpack.añadirCerveza(seleccionClon.get((int) Math.floor(Math.random()*seleccionClon.size())));
+                    }
+                    break;
             }
         }
 
