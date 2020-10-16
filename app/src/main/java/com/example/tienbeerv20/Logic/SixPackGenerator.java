@@ -38,6 +38,12 @@ public abstract class SixPackGenerator {
      */
 
     public SixPack generarSixpack(){
+        //traer los filtros del usuario e instanciar filtro con los filtros
+        //traer lista de firebase y meterla en selección
+        //clonar lista
+        //enviar a filter el segundo filtro
+        //verificar si el sixpack está lleno
+        //si está lleno retornar y si no, clonar la selección y enviar a filter el 3er filtro
         return sixpack;
     }
 
