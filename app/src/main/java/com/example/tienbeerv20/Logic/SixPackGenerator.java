@@ -38,7 +38,7 @@ public abstract class SixPackGenerator {
      */
 
     public SixPack generarSixpack(){
-        //traer los filtros del usuario e instanciar filtro con los filtros
+        //traer los filtros del usuario e instanciar filtro con los filtros y si quiere repetidas
         //traer lista de firebase y meterla en selección
         //clonar lista
         //enviar a filter el segundo filtro
@@ -81,6 +81,14 @@ public abstract class SixPackGenerator {
             }
         }
 
+        //booleano de repetidas temporal mientras se saca de la instanciación del filtro
+        boolean repetidas = true;
+        if(repetidas){
+            while(!sixpack.lleno()){
+                //mientras que el sixpack no esté lleno, llena con las cervezas que quedaron del 2do filtro
+                sixpack.añadirCerveza(seleccionClon.get((int) Math.floor(Math.random()*seleccionClon.size())));
+            }
+        }
 
     }
 }
