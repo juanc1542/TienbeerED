@@ -54,9 +54,9 @@ public class AnadirFragment extends Fragment {
         spiAlcohol = (Spinner) view.findViewById(R.id.ANspinnerAlcohol);
 
         //Asociacion de informacion d elos spinners
-        String[] arrayNac = {"$", "$$", "$$$"};
-        String[] arrayTipo = {"$", "$$", "$$$"};
-        String[] arrayAlcohol = {"$", "$$", "$$$"};
+        String[] arrayNac = {"Alemana", "Francesa", "Colombiana","Americana","Belga","Mexicana","Española","Japonesa","Resto del mundo"};
+        String[] arrayTipo = {"De Trigo", "Porter/Stout", "Lambic","Lager","Otras"};
+        String[] arrayAlcohol = {"Sin Alcohol", "Menor a 4.5%", "Entre 4.5% y 8%", "Mayor a 8%"};
 
         ArrayAdapter<String> adapNacionalidad = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, arrayNac);
         ArrayAdapter<String> adapTipo = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, arrayTipo);
@@ -67,6 +67,8 @@ public class AnadirFragment extends Fragment {
         spiTipo.setAdapter(adapTipo);
         spiAlcohol.setAdapter(adapAlcohol);
 
+
+        //Asignacion de funcionalidades del boton
         SUBIR=(Button) view.findViewById(R.id.ANbuttonSubir);
 
         SUBIR.setOnClickListener(new View.OnClickListener() {
@@ -90,11 +92,9 @@ public class AnadirFragment extends Fragment {
 
 
     }
-
-
+    
 
     //Metodo de recogida de recogida y subida de informacion a la DB
-
     public void  recogerDatos() {
         //Recoleccion de informacion en el xml del fragment
 
