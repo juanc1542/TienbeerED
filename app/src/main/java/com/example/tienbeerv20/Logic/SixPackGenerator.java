@@ -57,28 +57,28 @@ public abstract class SixPackGenerator {
         Iterator<Cerveza> itr = seleccionClon.iterator();
         if (filtro.equals("nacionalidad")){
             while (itr.hasNext()){
-                String nacionalidadNext = (String)itr.next().getNacionalidad();
+                String nacionalidadNext = itr.next().getNacionalidad();
                 if(!nacionalidadNext.equals(preferencia)){
                     itr.remove();
                 }
             }
         }if (filtro.equals("precio")){
             while (itr.hasNext()){
-                String precioNext = (String)itr.next().getRangoPrecio();
+                String precioNext = itr.next().getRangoPrecio();
                 if(!precioNext.equals(preferencia)){
                     itr.remove();
                 }
             }
         }if (filtro.equals("tipo")){
             while (itr.hasNext()){
-                String tipoNext = (String)itr.next().getTipo();
+                String tipoNext = itr.next().getTipo();
                 if(!tipoNext.equals(preferencia)){
                     itr.remove();
                 }
             }
         }if (filtro.equals("alcohol")){
             while (itr.hasNext()){
-                String alcoholNext = (String)itr.next().getAlcohol();
+                String alcoholNext = itr.next().getAlcohol();
                 if(!alcoholNext.equals(preferencia)){
                     itr.remove();
                 }
