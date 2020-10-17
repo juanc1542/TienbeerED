@@ -4,6 +4,7 @@ import com.example.tienbeerv20.Data.Cerveza;
 import com.example.tienbeerv20.Data.Filtro;
 import com.example.tienbeerv20.Data.SixPack;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -20,8 +21,6 @@ public class SixPackGenerator {
 
     public void setSeleccion(ArrayList<Cerveza> seleccion) {
         this.seleccion = seleccion;
-        //clonar la lista al momento de crearla
-        setSeleccionClon(seleccion);
     }
 
     public ArrayList<Cerveza> getSeleccionClon() {
@@ -53,8 +52,8 @@ public class SixPackGenerator {
             //caso de aleatorio hasta llenar
             case "r":
                 while(!sixpack.lleno() && currentP<4){
-                    this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
                     this.setSeleccionClon(seleccion);
+                    this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
                     currentP++;
                 }
                 break;
@@ -105,7 +104,6 @@ public class SixPackGenerator {
                 }
             }
         }
-
 
         if(repetidas){
             switch(caso){
