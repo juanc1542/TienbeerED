@@ -11,6 +11,7 @@ public class Cerveza {
     private String tipo;
     private String alcohol;
 
+    public Cerveza(){}
     //Metodo constructor
     public Cerveza(String Nombre,String Nacionalidad,int Precio,String rangoPrecio, String Tipo, String Alcohol){
         this.nombre= Nombre;

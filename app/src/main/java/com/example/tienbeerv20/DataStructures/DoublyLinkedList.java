@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class DoublyLinkedList {
     //A node class for doubly linked list
-    class Node{
+    class Node {
         String item;
         Node previous;
         Node next;
@@ -13,6 +13,7 @@ public class DoublyLinkedList {
             this.item = item;
         }
     }
+
     //Initially, heade and tail is set to null
     Node head, tail = null;
 
@@ -22,14 +23,13 @@ public class DoublyLinkedList {
         Node newNode = new Node(item);
 
         //if list is empty, head and tail points to newNode
-        if(head == null) {
+        if (head == null) {
             head = tail = newNode;
             //head's previous will be null
             head.previous = null;
             //tail's next will be null
             tail.next = null;
-        }
-        else {
+        } else {
             //add newNode to the end of list. tail->next set to newNode
             tail.next = newNode;
             //newNode->previous set to tail
@@ -45,16 +45,39 @@ public class DoublyLinkedList {
     public void printNodes() {
         //Node current will point to head
         Node current = head;
-        if(head == null) {
+        if (head == null) {
             System.out.println("Doubly linked list is empty");
             return;
         }
         System.out.println("Nodes of doubly linked list: ");
-        while(current != null) {
+        while (current != null) {
             //Print each node and then go to next.
-            Log.i("IMPRESION",current.item + " ");
+            Log.i("IMPRESION", current.item + " ");
             current = current.next;
         }
     }
+
+    public String[][] asignTo2DArray() {
+        //Node current will point to head
+        Node current = head;
+        String[][] arraicito = new String[4][4];
+
+        if (head == null) {
+            System.out.println("Doubly linked list is empty");
+            return null;
+        }
+        System.out.println("Nodes of doubly linked list: ");
+        while (current != null) {
+            //Print each node and then go to next.
+            for (int i = 0; i < 4; i++) {
+                arraicito[i][0] = current.item;
+                Log.i("IMPRESION", current.item + " ");
+                current = current.next;
+            }
+
+        }
+        return arraicito;
+    }
+
 }
 

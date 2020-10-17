@@ -7,7 +7,7 @@ import com.example.tienbeerv20.Data.SixPack;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public abstract class SixPackGenerator {
+public class SixPackGenerator {
     private ArrayList<Cerveza> seleccion;
     private ArrayList<Cerveza> seleccionClon;
     private SixPack sixpack = new SixPack();
