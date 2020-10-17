@@ -79,28 +79,28 @@ public class SixPackGenerator {
             while (itr.hasNext()){
                 String nacionalidadNext = itr.next().getNacionalidad();
                 //comprobar si está ya está en el sixpack
-                if(!nacionalidadNext.equals(preferencia) && this.sixpack.contiene(itr.next())){
+                if(!nacionalidadNext.equals(preferencia) || this.sixpack.contiene(itr.next())){
                     itr.remove();
                 }
             }
         }if (filtro.equals("Precio")){
             while (itr.hasNext()){
                 String precioNext = itr.next().getRangoPrecio();
-                if(!precioNext.equals(preferencia) && this.sixpack.contiene(itr.next())){
+                if(!precioNext.equals(preferencia) || this.sixpack.contiene(itr.next())){
                     itr.remove();
                 }
             }
         }if (filtro.equals("Tipo")){
             while (itr.hasNext()){
                 String tipoNext = itr.next().getTipo();
-                if(!tipoNext.equals(preferencia) && this.sixpack.contiene(itr.next())){
+                if(!tipoNext.equals(preferencia) || this.sixpack.contiene(itr.next())){
                     itr.remove();
                 }
             }
         }if (filtro.equals("Alcohol")) {
             while (itr.hasNext()) {
                 String alcoholNext = itr.next().getAlcohol();
-                if (!alcoholNext.equals(preferencia) && this.sixpack.contiene(itr.next())) {
+                if (!alcoholNext.equals(preferencia) || this.sixpack.contiene(itr.next())) {
                     itr.remove();
                 }
             }

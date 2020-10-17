@@ -148,6 +148,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     cervezas.add(ds.getValue(Cerveza.class));
+                    Toast.makeText(getContext(), "Conexion Exitosa", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -212,31 +213,37 @@ public class Filtros extends Fragment implements View.OnClickListener{
                 }
             }
 
+
+
             switch (filtroF[0][0]){
                 case "Nacionalidad":
                     for (int i = 0; i < cervezas.size(); i++) {
-                        if(cervezas.get(i).getNacionalidad().equals(filtroF[0][0]))
+                        if(cervezas.get(i).getNacionalidad().equals(filtroF[0][1]))
                             cervezasPrimerFiltro.add(cervezas.get(i));
                     }
                     break;
                 case "Tipo":
                     for (int i = 0; i < cervezas.size(); i++) {
-                        if(cervezas.get(i).getTipo().equals(filtroF[0][0]))
+                        if(cervezas.get(i).getTipo().equals(filtroF[0][1]))
                             cervezasPrimerFiltro.add(cervezas.get(i));
                     }
                     break;
                 case "Alcohol":
                     for (int i = 0; i < cervezas.size(); i++) {
-                        if(cervezas.get(i).getAlcohol().equals(filtroF[0][0]))
+                        if(cervezas.get(i).getAlcohol().equals(filtroF[0][1]))
                             cervezasPrimerFiltro.add(cervezas.get(i));
                     }
                     break;
                 case "Precio":
                     for (int i = 0; i < cervezas.size(); i++) {
-                        if(cervezas.get(i).getRangoPrecio().equals(filtroF[0][0]))
+                        if(cervezas.get(i).getRangoPrecio().equals(filtroF[0][1]))
                             cervezasPrimerFiltro.add(cervezas.get(i));
                     }
                     break;
+            }
+
+            for (int i = 0; i < 6; i++) {
+                System.out.println(cervezasPrimerFiltro.size());
             }
 
             Filtro filtroFinal= new Filtro(filtroF,repetidas);
