@@ -1,5 +1,6 @@
 package com.example.tienbeerv20.ui.filtros;
 
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -66,7 +67,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
         checkPrecio = view.findViewById(R.id.cbPrecio);
         checkAlcohol = view.findViewById(R.id.cbAlcohol);
         btnFiltrar=view.findViewById(R.id.btnFiltrar);
-        switchRepetidas=view.findViewById(R.id.switchRepetidas);
+        switchRepetidas=(Switch)view.findViewById(R.id.switchRepetidas);
 
         spiNacionalidad=(Spinner) view.findViewById(R.id.FIspinnerNacionalidad);
         spiTipo = (Spinner) view.findViewById(R.id.FIspinnerTipo);
@@ -98,7 +99,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (checkNacionalidad.isChecked()){
                     listaPreferencias.addNode("Nacionalidad");
-                    Toast.makeText(getContext(), "Nacionalidad", Toast.LENGTH_SHORT).show();
+
                 } else if(!checkNacionalidad.isChecked()){
                     Toast.makeText(getContext(), "Nacionalidad retirado", Toast.LENGTH_SHORT).show();
                 }
@@ -110,7 +111,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (checkTipo.isChecked()){
                     listaPreferencias.addNode("Tipo");
-                    Toast.makeText(getContext(), "Tipo", Toast.LENGTH_SHORT).show();
+
                 } else if(!checkTipo.isChecked()){
                     Toast.makeText(getContext(), "Tipo deselected", Toast.LENGTH_SHORT).show();
                 }
@@ -122,7 +123,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (checkPrecio.isChecked()){
                     listaPreferencias.addNode("Precio");
-                    Toast.makeText(getContext(), "Precio selected", Toast.LENGTH_SHORT).show();
+
                 } else if(!checkPrecio.isChecked()){
                     Toast.makeText(getContext(), "Precio deselected", Toast.LENGTH_SHORT).show();
                 }
@@ -134,7 +135,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (checkAlcohol.isChecked()){
                     listaPreferencias.addNode("Alcohol");
-                    Toast.makeText(getContext(), "Alcohol selected", Toast.LENGTH_SHORT).show();
+
                 } else if(!checkAlcohol.isChecked()){
                     Toast.makeText(getContext(), "Alcohol deselected", Toast.LENGTH_SHORT).show();
                 }
@@ -185,15 +186,16 @@ public class Filtros extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         boolean repetidas=false;
         String[][] filtroF;
-        //Se verifica el valor del switch, en caso de estar activado se pasa repetidas a true
-        if(v.getId()==switchRepetidas.getId()){
-            if(switchRepetidas.isChecked()){
-                repetidas=true;
-            }
-        }
+
 
         //Cuando se oprima el boton, se ejecutan las siguientes tareas
         if(v.getId()==btnFiltrar.getId()){
+            //Se verifica el valor del switch, en caso de estar activado se pasa repetidas a true
+            if(switchRepetidas.isChecked()){
+                Toast.makeText(getContext(), "Activated", Toast.LENGTH_SHORT).show();
+                repetidas=true;
+            }
+
             String nacionalidadFiltro = spiNacionalidad.getSelectedItem().toString();
             String tipoFiltro = spiTipo.getSelectedItem().toString();
             String precioFiltro = spiPrecio.getSelectedItem().toString();
