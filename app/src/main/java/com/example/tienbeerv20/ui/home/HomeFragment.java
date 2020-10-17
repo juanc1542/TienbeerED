@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         navController=Navigation.findNavController(view);
         view.findViewById(R.id.btnDejanos).setOnClickListener(this);
-
+        view.findViewById(R.id.btn3y3).setOnClickListener(this);
     }
 
 
