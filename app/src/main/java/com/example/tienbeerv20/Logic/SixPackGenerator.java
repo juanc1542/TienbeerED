@@ -52,7 +52,7 @@ public class SixPackGenerator {
         switch (caso){
             //caso de aleatorio hasta llenar
             case "r":
-                while(!sixpack.lleno()){
+                while(!sixpack.lleno() && currentP<4){
                     this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
                     this.setSeleccionClon(seleccion);
                     currentP++;
@@ -60,7 +60,7 @@ public class SixPackGenerator {
                 break;
             //caso hasta llenar 3
             case "a":
-                while(sixpack.cantidad()<=3){
+                while(sixpack.cantidad()<=3 && currentP<4){
                     this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
                     this.setSeleccionClon(seleccion);
                     currentP++;
