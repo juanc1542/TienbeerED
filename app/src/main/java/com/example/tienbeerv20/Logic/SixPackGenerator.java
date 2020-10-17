@@ -12,6 +12,7 @@ public abstract class SixPackGenerator {
     private ArrayList<Cerveza> seleccionClon;
     private SixPack sixpack = new SixPack();
     private String caso;
+    private boolean repetidas;
 
     public ArrayList<Cerveza> getSeleccion() {
         return seleccion;
@@ -41,6 +42,7 @@ public abstract class SixPackGenerator {
 
     public SixPack generarSixpack(Filtro filtro, ArrayList<Cerveza> primerFiltro, String caso){
         this.caso=caso;
+        this.repetidas=filtro.getRepetidas();
         this.setSeleccion(primerFiltro);
         //enviar a filter el segundo filtro
         int currentP = 1; //variable que determina la posición en la prioridad
@@ -73,7 +75,7 @@ public abstract class SixPackGenerator {
     //Borra todas las cervezas que no satisfacen la preferencia del usuario
     public void filter(String filtro, String preferencia){
         Iterator<Cerveza> itr = seleccionClon.iterator();
-        if (filtro.equals("nacionalidad")){
+        if (filtro.equals("Nacionalidad")){
             while (itr.hasNext()){
                 String nacionalidadNext = itr.next().getNacionalidad();
                 //comprobar si está ya está en el sixpack
@@ -81,31 +83,29 @@ public abstract class SixPackGenerator {
                     itr.remove();
                 }
             }
-        }if (filtro.equals("precio")){
+        }if (filtro.equals("Precio")){
             while (itr.hasNext()){
                 String precioNext = itr.next().getRangoPrecio();
                 if(!precioNext.equals(preferencia) && this.sixpack.contiene(itr.next())){
                     itr.remove();
                 }
             }
-        }if (filtro.equals("tipo")){
+        }if (filtro.equals("Tipo")){
             while (itr.hasNext()){
                 String tipoNext = itr.next().getTipo();
                 if(!tipoNext.equals(preferencia) && this.sixpack.contiene(itr.next())){
                     itr.remove();
                 }
             }
-        }if (filtro.equals("alcohol")){
-            while (itr.hasNext()){
+        }if (filtro.equals("Alcohol")) {
+            while (itr.hasNext()) {
                 String alcoholNext = itr.next().getAlcohol();
-                if(!alcoholNext.equals(preferencia) && this.sixpack.contiene(itr.next())){
+                if (!alcoholNext.equals(preferencia) && this.sixpack.contiene(itr.next())) {
                     itr.remove();
                 }
             }
         }
 
-        //booleano de repetidas temporal mientras se saca de la instanciación del filtro
-        boolean repetidas = true;
         if(repetidas){
             switch(caso){
                 case "r":
@@ -118,6 +118,25 @@ public abstract class SixPackGenerator {
                     while(sixpack.cantidad()<=3){
                         //mientras que el sixpack no tenga 3, llena con las cervezas que quedaron del 2do filtro
                         sixpack.añadirCerveza(seleccionClon.get((int) Math.floor(Math.random()*seleccionClon.size())));
+                    }
+                    break;
+            }
+        }else{
+            switch(caso) {
+                case "r":
+                    while (!sixpack.lleno() && itr.hasNext()) {
+                        //mientras que el sixpack no esté lleno, llena con las cervezas que quedaron del 2do filtro
+                        int index=(int) Math.floor(Math.random()*(seleccionClon.size()-1));
+                        sixpack.añadirCerveza(seleccionClon.get(index));
+                        seleccionClon.remove(index);
+                    }
+                    break;
+                case "a":
+                    while (sixpack.cantidad() <= 3 && itr.hasNext()) {
+                        //mientras que el sixpack no esté lleno, llena con las cervezas que quedaron del 2do filtro
+                        int index=(int) Math.floor(Math.random()*(seleccionClon.size()-1));
+                        sixpack.añadirCerveza(seleccionClon.get(index));
+                        seleccionClon.remove(index);
                     }
                     break;
             }

@@ -16,6 +16,10 @@ public class Filtro {
         return filtros;
     }
 
+    public boolean getRepetidas() {
+        return repetidas;
+    }
+
     public void setFiltros(String[][] filtros) {
         this.filtros = filtros;
     }
