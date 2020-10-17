@@ -25,7 +25,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private Button dejanos,tresytres,todoyo;
 
-    NavController navController= null;
+    private NavController navController= null;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

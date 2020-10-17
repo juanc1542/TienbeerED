@@ -1,4 +1,4 @@
-package com.example.tienbeerv20.ui.favoritos;
+package com.example.tienbeerv20.ui.SeleccionCervezas;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,29 +13,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tienbeerv20.R;
-import com.example.tienbeerv20.ui.filtros.FiltrosViewModel;
 
-public class Filtros extends Fragment {
+public class SeleccionCervezas extends Fragment {
 
-    private FiltrosViewModel mViewModel;
+    private SeleccionCervezasViewModel mViewModel;
 
-    public static Filtros newInstance() {
-        return new Filtros();
+    public static SeleccionCervezas newInstance() {
+        return new SeleccionCervezas();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.filtros_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_seleccion_cervezas, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(FiltrosViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(SeleccionCervezasViewModel.class);
         // TODO: Use the ViewModel
     }
-
-
 
 }

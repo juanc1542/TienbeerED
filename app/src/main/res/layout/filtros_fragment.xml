@@ -5,10 +5,10 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.favoritos.Filtros">
+    tools:context=".ui.filtros.Filtros">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnFiltrar"
         android:layout_width="199dp"
         android:layout_height="57dp"
         android:layout_marginBottom="32dp"
@@ -25,9 +25,9 @@
         android:layout_marginEnd="20dp"
         android:text="@string/nacionalidad"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintEnd_toStartOf="@+id/FIspinnerNacionalidad"
         app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/checkBox"
+        app:layout_constraintStart_toEndOf="@+id/cbNac"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -37,9 +37,9 @@
         android:layout_marginTop="56dp"
         android:text="@string/tipo"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/spinner6"
+        app:layout_constraintEnd_toStartOf="@+id/FIspinnerTipo"
         app:layout_constraintHorizontal_bias="0.338"
-        app:layout_constraintStart_toEndOf="@+id/checkBox5"
+        app:layout_constraintStart_toEndOf="@+id/cbTipo"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
@@ -49,9 +49,9 @@
         android:layout_marginTop="44dp"
         android:text="Rango de precio"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/spinner5"
+        app:layout_constraintEnd_toStartOf="@+id/FIspinnerPrecio"
         app:layout_constraintHorizontal_bias="0.354"
-        app:layout_constraintStart_toEndOf="@+id/checkBox6"
+        app:layout_constraintStart_toEndOf="@+id/cbPrecio"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <TextView
@@ -62,13 +62,13 @@
         android:layout_marginEnd="20dp"
         android:text="@string/de_alcohol"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintEnd_toStartOf="@+id/FIspinnerNacionalidad"
         app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/checkBox"
+        app:layout_constraintStart_toEndOf="@+id/cbNac"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/FIspinnerNacionalidad"
         android:layout_width="209dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
@@ -77,34 +77,34 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner5"
+        android:id="@+id/FIspinnerPrecio"
         android:layout_width="209dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner6" />
+        app:layout_constraintTop_toBottomOf="@+id/FIspinnerTipo" />
 
     <Spinner
-        android:id="@+id/spinner7"
+        android:id="@+id/FIspinnerAlcohol"
         android:layout_width="209dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner5" />
+        app:layout_constraintTop_toBottomOf="@+id/FIspinnerPrecio" />
 
     <Spinner
-        android:id="@+id/spinner6"
+        android:id="@+id/FIspinnerTipo"
         android:layout_width="209dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/FIspinnerNacionalidad" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/cbNac"
         android:layout_width="32dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
@@ -112,27 +112,37 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox5"
+        android:id="@+id/cbTipo"
         android:layout_width="34dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/cbNac" />
 
     <CheckBox
-        android:id="@+id/checkBox6"
+        android:id="@+id/cbPrecio"
         android:layout_width="34dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox5" />
+        app:layout_constraintTop_toBottomOf="@+id/cbTipo" />
 
     <CheckBox
-        android:id="@+id/checkBox7"
+        android:id="@+id/cbAlcohol"
         android:layout_width="34dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
+        app:layout_constraintTop_toBottomOf="@+id/cbPrecio" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Deseas repetir cervezas?     "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FIspinnerAlcohol" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

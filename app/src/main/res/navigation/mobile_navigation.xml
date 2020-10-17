@@ -45,7 +45,20 @@
 
     <fragment
         android:id="@+id/nav_filtro"
-        android:name="com.example.tienbeerv20.ui.favoritos.Filtros"
+        android:name="com.example.tienbeerv20.ui.filtros.Filtros"
         android:label="Seleccion de filtros"
-        tools:layout="@layout/filtros_fragment" />
+        tools:layout="@layout/filtros_fragment" >
+        <action
+            android:id="@+id/action_nav_filtro_to_seleccionCervezas"
+            app:destination="@id/seleccionCervezas" />
+    </fragment>
+    <fragment
+        android:id="@+id/seleccionCervezas"
+        android:name="com.example.tienbeerv20.ui.SeleccionCervezas.SeleccionCervezas"
+        android:label="fragment_seleccion_cervezas"
+        tools:layout="@layout/fragment_seleccion_cervezas" >
+        <action
+            android:id="@+id/action_seleccionCervezas_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>
