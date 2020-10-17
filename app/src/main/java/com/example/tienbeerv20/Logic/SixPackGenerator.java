@@ -106,6 +106,7 @@ public class SixPackGenerator {
             }
         }
 
+
         if(repetidas){
             switch(caso){
                 case "r":
