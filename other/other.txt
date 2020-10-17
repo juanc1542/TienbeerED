@@ -1,0 +1,2 @@
+Otros archivos de ejecucion y configuracion
+ej: proyect.xml, build.xml, run.sh, run.bat (ejecucion), etc.
