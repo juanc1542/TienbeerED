@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.tienbeerv20.Data.Filtro;
@@ -34,6 +35,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
     private Button btnFiltrar;
     private Spinner spiNacionalidad,spiTipo,spiPrecio,spiAlcohol;
     private NavController navController= null;
+    private Switch switchRepetidas;
 
     public static Filtros newInstance() {
         return new Filtros();
@@ -49,7 +51,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
         checkPrecio = view.findViewById(R.id.cbPrecio);
         checkAlcohol = view.findViewById(R.id.cbAlcohol);
         btnFiltrar=view.findViewById(R.id.btnFiltrar);
-
+        switchRepetidas=view.findViewById(R.id.switchRepetidas);
 
         spiNacionalidad=(Spinner) view.findViewById(R.id.FIspinnerNacionalidad);
         spiTipo = (Spinner) view.findViewById(R.id.FIspinnerTipo);
@@ -148,6 +150,14 @@ public class Filtros extends Fragment implements View.OnClickListener{
     //Tambien se realiza la transicion al siguiente fragment
     @Override
     public void onClick(View v) {
+        boolean repetidas=false;
+        String[] prioridades=new String[4];
+        if(v.getId()==switchRepetidas.getId()){
+            if(switchRepetidas.isChecked()){
+                repetidas=true;
+            }
+        }
+
         if(v.getId()==btnFiltrar.getId()){
             String nacionalidadFiltro = spiNacionalidad.getSelectedItem().toString();
             String tipoFiltro = spiTipo.getSelectedItem().toString();
@@ -155,7 +165,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
             String alcoholFiltro = spiAlcohol.getSelectedItem().toString();
 
 
-            //Filtro filtroFinal= new Filtro();
+            //Filtro filtroFinal= new Filtro(nacionalidadFiltro,tipoFiltro,alcoholFiltro,precioFiltro);
             listaPreferencias.printNodes();
             Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_seleccionCervezas);
         }
