@@ -242,10 +242,6 @@ public class Filtros extends Fragment implements View.OnClickListener{
                     break;
             }
 
-            for (int i = 0; i < 6; i++) {
-                System.out.println(cervezasPrimerFiltro.size());
-            }
-
             Filtro filtroFinal= new Filtro(filtroF,repetidas);
 
             SixPackGenerator sixPack= new SixPackGenerator();
