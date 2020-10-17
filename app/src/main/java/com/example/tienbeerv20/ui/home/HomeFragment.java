@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.example.tienbeerv20.Data.Tests;
 import com.example.tienbeerv20.R;
 import com.example.tienbeerv20.ui.favoritos.FavoritosFragment;
 
@@ -34,7 +36,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         dejanos=(Button) root.findViewById(R.id.btnDejanos);
-        tresytres=(Button) root.findViewById(R.id.btnDejanos);
+        tresytres=(Button) root.findViewById(R.id.btn3y3);
         todoyo=(Button) root.findViewById(R.id.btnDejanos);
 
 
@@ -65,6 +67,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if(v.getId()==dejanos.getId()){
             Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_filtro);
+        }else if(v.getId()==tresytres.getId()){
+            Tests test = new Tests();
+            test.generateAndUploadTestBeers(10000);
+            Toast.makeText(getActivity(), "salen 10k", Toast.LENGTH_LONG).show();
         }
     }
 }

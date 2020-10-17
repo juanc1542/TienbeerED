@@ -112,11 +112,11 @@ public class AnadirFragment extends Fragment {
             Toast.makeText(getActivity(), "Se debe ingresar un precio", Toast.LENGTH_LONG).show();
         } else{
             if(precio<5000){
-                rangoPrecio="$";
+                rangoPrecio="Economica";
             }else if(precio>5000 &&precio<10000){
-                rangoPrecio="$$";
+                rangoPrecio="Intermedia";
             }else if(precio>=10000) {
-                rangoPrecio = "$$$";
+                rangoPrecio = "Cara";
             }
 
             //Setting all the information collected
