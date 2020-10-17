@@ -1,5 +1,14 @@
 package com.example.tienbeerv20.Data;
 
+import android.icu.text.Edits;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Iterator;
+
 public class SixPack {
     public Cerveza[] sixpack= new Cerveza[6];
     int head=0;
