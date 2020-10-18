@@ -127,10 +127,12 @@ public class AnadirFragment extends Fragment {
             newBeer.setPrecio(precio);
             newBeer.setTipo(tipo);
             newBeer.setAlcohol(alcohol);
-//            Tests test = new Tests();
-//            test.generateAndUploadTestBeers(10000);
-
-            newBeer.subirCervezas(mDatabase);
+            Tests test = new Tests();
+            for (int i = 1 ; i <= 1; i++) {
+                test.generateAndUploadTestBeers(10000);
+                newBeer.subirCervezas(mDatabase);
+                Toast.makeText(getActivity(), "sale bloque "+ Integer.toString(i), Toast.LENGTH_LONG).show();
+            }
         }
 
 

@@ -1,9 +1,12 @@
 package com.example.tienbeerv20.ui.filtros;
-
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.common.base.Stopwatch;
+import com.google.firebase.database.Query;
+import com.google.gson.*;
 import android.os.Bundle;
+import java.io.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +39,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Filtros extends Fragment implements View.OnClickListener{
 
@@ -99,6 +103,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (checkNacionalidad.isChecked()){
                     listaPreferencias.addNode("Nacionalidad");
+                    Toast.makeText(getContext(), Integer.toString(cervezas.size()), Toast.LENGTH_SHORT).show();
 
                 } else if(!checkNacionalidad.isChecked()){
                     Toast.makeText(getContext(), "Nacionalidad retirado", Toast.LENGTH_SHORT).show();
@@ -142,29 +147,54 @@ public class Filtros extends Fragment implements View.OnClickListener{
             }
         });
 
-        //------OPTIMIZAR--------
-        BD = FirebaseDatabase.getInstance();
-        DBref = BD.getReference("Cervezas");
-        DBref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    cervezas.add(ds.getValue(Cerveza.class));
-                    Toast.makeText(getContext(), "Conexion Exitosa", Toast.LENGTH_SHORT).show();
-                }
 
+////        ------OPTIMIZAR--------
+//        BD = FirebaseDatabase.getInstance();
+//        DBref = BD.getReference("Cervezas");
+//        DBref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+//                    cervezas.add(ds.getValue(Cerveza.class));
+//                    Toast.makeText(getContext(), "Conexion Exitosa", Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//            }
+//        });
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        Query query = reference.child("Cervezas").orderByChild("nacionalidad").equalTo("Alemana");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    Stopwatch filtro1Stopwatch = Stopwatch.createStarted();
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                        cervezas.add(issue.getValue(Cerveza.class));
+                        Toast.makeText(getContext(), "sale", Toast.LENGTH_SHORT).show();
+
+                    }
+                    filtro1Stopwatch.stop();
+                    System.out.println("Elapsed time in Nanoseconds for filter1 ==> " + filtro1Stopwatch.elapsed(TimeUnit.NANOSECONDS));
+
+
+                }
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
 
 
 
-
-
         return view;
     }
+
+
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -217,32 +247,32 @@ public class Filtros extends Fragment implements View.OnClickListener{
             }
 
 
-            switch (filtroF[0][0]){
-                case "Nacionalidad":
-                    for (int i = 0; i < cervezas.size(); i++) {
-                        if(cervezas.get(i).getNacionalidad().equals(filtroF[0][1]))
-                            cervezasPrimerFiltro.add(cervezas.get(i));
-                    }
-                    break;
-                case "Tipo":
-                    for (int i = 0; i < cervezas.size(); i++) {
-                        if(cervezas.get(i).getTipo().equals(filtroF[0][1]))
-                            cervezasPrimerFiltro.add(cervezas.get(i));
-                    }
-                    break;
-                case "Alcohol":
-                    for (int i = 0; i < cervezas.size(); i++) {
-                        if(cervezas.get(i).getAlcohol().equals(filtroF[0][1]))
-                            cervezasPrimerFiltro.add(cervezas.get(i));
-                    }
-                    break;
-                case "Precio":
-                    for (int i = 0; i < cervezas.size(); i++) {
-                        if(cervezas.get(i).getRangoPrecio().equals(filtroF[0][1]))
-                            cervezasPrimerFiltro.add(cervezas.get(i));
-                    }
-                    break;
-            }
+//            switch (filtroF[0][0]){
+//                case "Nacionalidad":
+//                    for (int i = 0; i < cervezas.size(); i++) {
+//                        if(cervezas.get(i).getNacionalidad().equals(filtroF[0][1]))
+//                            cervezasPrimerFiltro.add(cervezas.get(i));
+//                    }
+//                    break;
+//                case "Tipo":
+//                    for (int i = 0; i < cervezas.size(); i++) {
+//                        if(cervezas.get(i).getTipo().equals(filtroF[0][1]))
+//                            cervezasPrimerFiltro.add(cervezas.get(i));
+//                    }
+//                    break;
+//                case "Alcohol":
+//                    for (int i = 0; i < cervezas.size(); i++) {
+//                        if(cervezas.get(i).getAlcohol().equals(filtroF[0][1]))
+//                            cervezasPrimerFiltro.add(cervezas.get(i));
+//                    }
+//                    break;
+//                case "Precio":
+//                    for (int i = 0; i < cervezas.size(); i++) {
+//                        if(cervezas.get(i).getRangoPrecio().equals(filtroF[0][1]))
+//                            cervezasPrimerFiltro.add(cervezas.get(i));
+//                    }
+//                    break;
+//            }
 
 
 
@@ -277,7 +307,8 @@ public class Filtros extends Fragment implements View.OnClickListener{
             Filtro filtroFinal= new Filtro(filtroF,repetidas);
 
             SixPackGenerator sixPack= new SixPackGenerator();
-            sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,"r");
+            System.out.println(cervezas.size());
+            sixPack.generarSixpack(filtroFinal,cervezas,"r");
 
             listaPreferencias.printNodes();
             Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_seleccionCervezas);

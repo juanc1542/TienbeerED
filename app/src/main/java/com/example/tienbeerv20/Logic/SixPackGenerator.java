@@ -34,6 +34,8 @@ public class SixPackGenerator {
         this.seleccionClon = seleccionClon;
     }
 
+
+
     /*es el método quedebe recibir la lista de cervezas del primer filtro de firebase
     y el objeto filtro de lo que se halla recibido de input por el usuario en filtros.
     de este método debe definir el arreglo de cervezas y el clon del arreglo y debe enviarle
@@ -43,6 +45,7 @@ public class SixPackGenerator {
      */
 
     public SixPack generarSixpack(Filtro filtro, ArrayList<Cerveza> primerFiltro, String caso){
+//        System.out.println("dir: "+System.getProperty("user.dir"));
         Stopwatch generarSixPackStopwatch = Stopwatch.createStarted();
         this.caso=caso;
         this.repetidas=filtro.getRepetidas();
@@ -74,12 +77,13 @@ public class SixPackGenerator {
         generarSixPackStopwatch.stop();
         System.out.println("Elapsed time in Nanoseconds for generar sixPack ==> " + generarSixPackStopwatch.elapsed(TimeUnit.NANOSECONDS));
         System.out.println(sixpack.cantidad());
-//        System.out.println(sixpack.sixpack[0].getNombre());
-//        System.out.println(sixpack.sixpack[1].getNombre());
-//        System.out.println(sixpack.sixpack[2].getNombre());
-//        System.out.println(sixpack.sixpack[3].getNombre());
-//        System.out.println(sixpack.sixpack[4].getNombre());
-//        System.out.println(sixpack.sixpack[5].getNombre());
+        System.out.println(sixpack.sixpack[0].getNombre());
+        System.out.println(sixpack.sixpack[1].getNombre());
+        System.out.println(sixpack.sixpack[2].getNombre());
+        System.out.println(sixpack.sixpack[3].getNombre());
+        System.out.println(sixpack.sixpack[4].getNombre());
+        System.out.println(sixpack.sixpack[5].getNombre());
+        System.out.println("mucho texto");
         return sixpack;
     }
 
@@ -87,6 +91,7 @@ public class SixPackGenerator {
     //Borra todas las cervezas que no satisfacen la preferencia del usuario
     public void filter(String filtro, String preferencia){
         Stopwatch filterStopwatch = Stopwatch.createStarted();
+        Stopwatch filtro2Stopwatch = Stopwatch.createStarted();
         Iterator<Cerveza> itr = seleccionClon.iterator();
         if (filtro.equals("Nacionalidad")){
             while (itr.hasNext()){
@@ -99,14 +104,14 @@ public class SixPackGenerator {
         }if (filtro.equals("Precio")){
             while (itr.hasNext()){
                 String precioNext = itr.next().getRangoPrecio();
-                if(!precioNext.equals(preferencia) || this.sixpack.contiene(itr.next())){
+                if(!precioNext.equals(preferencia)){
                     itr.remove();
                 }
             }
         }if (filtro.equals("Tipo")){
             while (itr.hasNext()){
                 String tipoNext = itr.next().getTipo();
-                if(!tipoNext.equals(preferencia) || this.sixpack.contiene(itr.next())){
+                if(!tipoNext.equals(preferencia)){
                     itr.remove();
                 }
             }
@@ -118,6 +123,8 @@ public class SixPackGenerator {
                 }
             }
         }
+        filtro2Stopwatch.stop();
+        System.out.println("Elapsed time in Nanoseconds for filter2 ==> " + filtro2Stopwatch.elapsed(TimeUnit.NANOSECONDS));
 
         if(repetidas){
             switch(caso){
