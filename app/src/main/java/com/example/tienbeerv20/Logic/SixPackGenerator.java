@@ -71,15 +71,22 @@ public class SixPackGenerator {
                 }
                 break;
         }
-        System.out.println(sixpack.cantidad());
         generarSixPackStopwatch.stop();
         System.out.println("Elapsed time in Nanoseconds for generar sixPack ==> " + generarSixPackStopwatch.elapsed(TimeUnit.NANOSECONDS));
+        System.out.println(sixpack.cantidad());
+//        System.out.println(sixpack.sixpack[0].getNombre());
+//        System.out.println(sixpack.sixpack[1].getNombre());
+//        System.out.println(sixpack.sixpack[2].getNombre());
+//        System.out.println(sixpack.sixpack[3].getNombre());
+//        System.out.println(sixpack.sixpack[4].getNombre());
+//        System.out.println(sixpack.sixpack[5].getNombre());
         return sixpack;
     }
 
     //A este metodo le entra el segundo filtro y la preferencia del usuario para este filtro
     //Borra todas las cervezas que no satisfacen la preferencia del usuario
     public void filter(String filtro, String preferencia){
+        Stopwatch filterStopwatch = Stopwatch.createStarted();
         Iterator<Cerveza> itr = seleccionClon.iterator();
         if (filtro.equals("Nacionalidad")){
             while (itr.hasNext()){
@@ -147,7 +154,8 @@ public class SixPackGenerator {
                     break;
             }
         }
-
+        filterStopwatch.stop();
+        System.out.println("Elapsed time in Nanoseconds for filter ==> " + filterStopwatch.elapsed(TimeUnit.NANOSECONDS));
     }
 
 

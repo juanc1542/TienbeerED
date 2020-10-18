@@ -68,8 +68,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         if(v.getId()==dejanos.getId()){
             Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_filtro);
         }else if(v.getId()==tresytres.getId()){
-            Tests test = new Tests();
-            test.generateAndUploadTestBeers(10000);
+//            Tests test = new Tests();
+//            test.generateAndUploadTestBeers(10000);
             Toast.makeText(getActivity(), "salen 10k", Toast.LENGTH_LONG).show();
         }
     }
