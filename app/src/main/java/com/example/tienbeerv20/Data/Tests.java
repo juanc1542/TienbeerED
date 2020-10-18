@@ -1,7 +1,12 @@
 package com.example.tienbeerv20.Data;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Tests {
@@ -11,7 +16,9 @@ public class Tests {
     String[] arrayAlcohol = {"Sin Alcohol", "Menor a 4.5%", "Entre 4.5% y 8%", "Mayor a 8%"};
     Boolean[] arrayRepetidas = {true, false};
 
-    public void generateAndUploadTestBeers(int n){
+
+    public ArrayList<Cerveza> generateTestBeers(int n){
+        ArrayList<Cerveza> cervezas = new ArrayList<>();
         int precio = 0;
         for (int i = 1; i <= n; i++){
             String nombre = Integer.toString(i);
@@ -31,10 +38,8 @@ public class Tests {
             }
 
             Cerveza cerveza = new Cerveza(nombre, arrayNac[nacIndex], precio, arrayPrecio[precioIndex], arrayTipo[tipoIndex], arrayAlcohol[alcoholIndex]);
-
-            //Metodo para subir el arreglo de informacion a la base de datos
-            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-            cerveza.subirCervezas(mDatabase);
+            cervezas.add(cerveza);
         }
+        return cervezas;
     }
 }
