@@ -1,8 +1,12 @@
 package com.example.tienbeerv20.Logic;
+import com.google.common.*;
+import java.time.*;
+import java.util.concurrent.TimeUnit;
 
 import com.example.tienbeerv20.Data.Cerveza;
 import com.example.tienbeerv20.Data.Filtro;
 import com.example.tienbeerv20.Data.SixPack;
+import com.google.common.base.Stopwatch;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -40,6 +44,7 @@ public class SixPackGenerator {
      */
 
     public SixPack generarSixpack(Filtro filtro, ArrayList<Cerveza> primerFiltro, String caso){
+        Stopwatch generarSixPackStopwatch = Stopwatch.createStarted();
         this.caso=caso;
         this.repetidas=filtro.getRepetidas();
         this.setSeleccion(primerFiltro);
@@ -68,6 +73,8 @@ public class SixPackGenerator {
                 break;
         }
         System.out.println(sixpack.cantidad());
+        generarSixPackStopwatch.stop();
+        System.out.println("Elapsed time in Nanoseconds for generar sixPack ==> " + generarSixPackStopwatch.elapsed(TimeUnit.NANOSECONDS));
         return sixpack;
     }
 
