@@ -193,7 +193,12 @@ public class Filtros extends Fragment implements View.OnClickListener{
 //        });
 
 
-
+        Tests test = new Tests();
+        Stopwatch tiempoGenerador = Stopwatch.createStarted();
+        cervezas =  test.generateTestBeers(10000);
+        tiempoGenerador.stop();
+        System.out.println("Elapsed time in Nanoseconds for tiempoGenerador ==> " + tiempoGenerador.elapsed(TimeUnit.NANOSECONDS));
+        Toast.makeText(getContext(), "Test generado", Toast.LENGTH_SHORT).show();
 
         return view;
     }
@@ -223,8 +228,6 @@ public class Filtros extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         boolean repetidas=false;
         String[][] filtroF;
-        Tests test = new Tests();
-        cervezas =  test.generateTestBeers(100000000);
 
         //Cuando se oprima el boton, se ejecutan las siguientes tareas
         if(v.getId()==btnFiltrar.getId()){
@@ -253,6 +256,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
                 }
             }
 
+            Stopwatch filtro1Stopwatch = Stopwatch.createStarted();
             switch (filtroF[0][0]){
                 case "Nacionalidad":
                     for (int i = 0; i < cervezas.size(); i++) {
@@ -279,6 +283,8 @@ public class Filtros extends Fragment implements View.OnClickListener{
                     }
                     break;
             }
+            filtro1Stopwatch.stop();
+            System.out.println("Elapsed time in Nanoseconds for filter1 ==> " + filtro1Stopwatch.elapsed(TimeUnit.NANOSECONDS));
 
 
 
