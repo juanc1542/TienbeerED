@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.tienbeerv20.Data.Cerveza;
+import com.example.tienbeerv20.Data.Tests;
 import com.example.tienbeerv20.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -76,6 +77,7 @@ public class AnadirFragment extends Fragment {
             public void onClick(View v) {
                 recogerDatos();
                 Toast.makeText(getActivity(),"Subidito",Toast.LENGTH_LONG).show();
+
             }
         });
 

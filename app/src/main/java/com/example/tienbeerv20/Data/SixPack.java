@@ -30,6 +30,10 @@ public class SixPack {
         return false;
     }
 
+    public Cerveza[] getSixpack() {
+        return sixpack;
+    }
+
     public int cantidad(){
         return head;
     }

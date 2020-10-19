@@ -29,6 +29,7 @@ import com.example.tienbeerv20.Data.SixPack;
 import com.example.tienbeerv20.DataStructures.DoublyLinkedList;
 import com.example.tienbeerv20.Logic.SixPackGenerator;
 import com.example.tienbeerv20.R;
+import com.example.tienbeerv20.ui.SeleccionCervezas.SeleccionCervezas;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -247,11 +248,26 @@ public class Filtros extends Fragment implements View.OnClickListener{
             Filtro filtroFinal= new Filtro(filtroF,repetidas);
 
             SixPackGenerator sixPack= new SixPackGenerator();
-            sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,"r");
+            SixPack newSix= sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,"r");
+            Cerveza beer[] = newSix.getSixpack();
+            ArrayList<String> transpasoFragment=new ArrayList<>(6);
 
+            for (int i = 0; i < 6; i++) {
+                transpasoFragment.add(beer[i].getNombre()+" "+beer[i].getNacionalidad()+" "+beer[i].getRangoPrecio());
+            }
+            Toast.makeText(getContext(), transpasoFragment.get(0), Toast.LENGTH_SHORT).show();
             listaPreferencias.printNodes();
-            Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_seleccionCervezas);
+
+            SeleccionCervezas fragment = new SeleccionCervezas();
+            Bundle bundle = new Bundle();
+            bundle.putStringArrayList("key",transpasoFragment);
+            fragment.setArguments(bundle);
+
+            Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_seleccionCervezas,bundle);
         }
+
+
+
     }
 
 
