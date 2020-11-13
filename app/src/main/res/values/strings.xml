@@ -24,4 +24,11 @@
     <string name="de_alcohol">% de alcohol</string>
     <string name="subir">SUBIR</string>
     <string name="_3_y_3">3 y 3</string>
+    <string name="crea_un_nuevo_six_pack">Crea un nuevo six pack</string>
+    <string name="_3_3"><![CDATA[3 & 3]]></string>
+    <string name="dejanos_sorprenderte">Dejanos sorprenderte</string>
+    <string name="escoge_3_y_nosotros_3">Escoge 3 y nosotros 3</string>
+    <string name="lo_hacemos_todo_por_ti">Lo hacemos todo por ti</string>
+    <string name="crea_tu_propio_sixpack_desde_cero">Crea tu propio SixPack desde cero</string>
+    <string name="_3_y3">3 y3</string>
 </resources>
