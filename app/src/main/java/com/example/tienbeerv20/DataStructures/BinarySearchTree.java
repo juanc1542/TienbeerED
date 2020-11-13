@@ -1,4 +1,6 @@
-package com.example.tienbeerv20.Data;
+package com.example.tienbeerv20.DataStructures;
+
+import com.example.tienbeerv20.Data.Cerveza;
 
 import java.util.ArrayList;
 import java.util.Iterator;
