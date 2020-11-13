@@ -79,7 +79,7 @@ public class SixPackGenerator {
             while (itr.hasNext()){
                 String nacionalidadNext = itr.next().getNacionalidad();
                 //comprobar si está ya está en el sixpack
-                if(!nacionalidadNext.equals(preferencia) || this.sixpack.contiene(itr.next())){
+                if(!nacionalidadNext.equals(preferencia) || this.sixpack.contiene(itr.next())/*|| !this.sixpack.getInventario>0*/){
                     itr.remove();
                 }
             }
