@@ -1,4 +1,4 @@
-package com.example.tienbeerv20.ui.BusquedaCerveza;
+package com.example.tienbeerv20.ui.BusquedaCervezas;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,27 +13,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tienbeerv20.R;
-//import com.example.tienbeerv20.ui.BusquedaCerveza.R;
 
-public class BusquedaCervezaFragment extends Fragment {
+public class BusquedaCerveza extends Fragment {
 
-    private BusquedaCervezaModel mViewModel;
+    private BusquedaCervezaViewModel mViewModel;
 
-    public static BusquedaCervezaFragment newInstance() {
-        return new BusquedaCervezaFragment();
+    public static BusquedaCerveza newInstance() {
+        return new BusquedaCerveza();
     }
 
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.busqueda_cerveza, container, false);
+        return inflater.inflate(R.layout.busqueda_cerveza_fragment, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(BusquedaCervezaModel.class);
+        mViewModel = new ViewModelProvider(this).get(BusquedaCervezaViewModel.class);
         // TODO: Use the ViewModel
     }
 

@@ -30,7 +30,7 @@ public class AnadirFragment extends Fragment {
     private AnadirViewModel mViewModel;
     DatabaseReference mDatabase;
     private Spinner spiNacionalidad,spiPrecio,spiTipo,spiAlcohol;
-    private EditText TextNombre, TextPrecio;
+    private EditText TextNombre, TextPrecio, TextCantidad;
     private Button SUBIR;
 
     public static AnadirFragment newInstance() {
@@ -51,6 +51,7 @@ public class AnadirFragment extends Fragment {
         TextNombre = (EditText) view.findViewById(R.id.ANtextoName);
         spiNacionalidad = (Spinner) view.findViewById(R.id.ANspinnerNacionalidad);
         TextPrecio = (EditText) view.findViewById(R.id.ANtextPrecio);
+        TextCantidad= (EditText) view.findViewById(R.id.ANcantidadCervezas);
         spiTipo = (Spinner) view.findViewById(R.id.ANspinnerTipo);
         spiAlcohol = (Spinner) view.findViewById(R.id.ANspinnerAlcohol);
 
@@ -103,6 +104,7 @@ public class AnadirFragment extends Fragment {
         String name = TextNombre.getText().toString().trim();
         String nacionalidad = spiNacionalidad.getSelectedItem().toString();
         int precio = Integer.parseInt(TextPrecio.getText().toString().trim());
+        int cantidad = Integer.parseInt(TextCantidad.getText().toString().trim());
         String rangoPrecio="";
         String tipo= spiTipo.getSelectedItem().toString();
         String alcohol= spiAlcohol.getSelectedItem().toString();
@@ -122,7 +124,7 @@ public class AnadirFragment extends Fragment {
             }
 
             //Setting all the information collected
-            Cerveza newBeer = new Cerveza(name,nacionalidad,precio,rangoPrecio,tipo,alcohol);
+            Cerveza newBeer = new Cerveza(name,nacionalidad,precio,rangoPrecio,tipo,alcohol,cantidad);
             newBeer.setNombre(name);
             newBeer.setNacionalidad(nacionalidad);
             newBeer.setPrecio(precio);

@@ -17,6 +17,9 @@
             app:exitAnim="@anim/fragment_fade_exit"
             app:popEnterAnim="@anim/fragment_fade_enter"
             app:popExitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_nav_home_to_busquedaCerveza"
+            app:destination="@id/busquedaCerveza" />
     </fragment>
 
     <fragment
@@ -61,4 +64,9 @@
             android:id="@+id/action_seleccionCervezas_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
+    <fragment
+        android:id="@+id/busquedaCerveza"
+        android:name="com.example.tienbeerv20.ui.BusquedaCervezas.BusquedaCerveza"
+        android:label="busqueda_cerveza_fragment"
+        tools:layout="@layout/busqueda_cerveza_fragment" />
 </navigation>

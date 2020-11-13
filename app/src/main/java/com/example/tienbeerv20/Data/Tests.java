@@ -30,11 +30,11 @@ public class Tests {
                 precio = 11000;
             }
 
-            Cerveza cerveza = new Cerveza(nombre, arrayNac[nacIndex], precio, arrayPrecio[precioIndex], arrayTipo[tipoIndex], arrayAlcohol[alcoholIndex]);
+            //Cerveza cerveza = new Cerveza(nombre, arrayNac[nacIndex], precio, arrayPrecio[precioIndex], arrayTipo[tipoIndex], arrayAlcohol[alcoholIndex]);
 
             //Metodo para subir el arreglo de informacion a la base de datos
             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-            cerveza.subirCervezas(mDatabase);
+            //cerveza.subirCervezas(mDatabase);
         }
     }
 }

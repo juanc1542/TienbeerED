@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         dejanos=(Button) root.findViewById(R.id.btnDejanos);
         tresytres=(Button) root.findViewById(R.id.btn3y3);
-        todoyo=(Button) root.findViewById(R.id.btnDejanos);
+        todoyo=(Button) root.findViewById(R.id.btnArmalo);
 
 
 
@@ -60,6 +60,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         navController=Navigation.findNavController(view);
         view.findViewById(R.id.btnDejanos).setOnClickListener(this);
         view.findViewById(R.id.btn3y3).setOnClickListener(this);
+        view.findViewById(R.id.btnArmalo).setOnClickListener(this);
     }
 
 
@@ -71,6 +72,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Tests test = new Tests();
             test.generateAndUploadTestBeers(10000);
             Toast.makeText(getActivity(), "salen 10k", Toast.LENGTH_LONG).show();
+        }else if(v.getId()==todoyo.getId()){
+            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_busquedaCerveza);
         }
     }
 }
