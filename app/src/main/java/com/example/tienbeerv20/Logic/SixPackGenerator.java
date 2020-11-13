@@ -39,6 +39,12 @@ public class SixPackGenerator {
     para llenar el sixpack y finalmente retornarlo
      */
 
+    public void añadirCerveza(Cerveza cerveza){
+        if(!this.sixpack.lleno()){
+            this.sixpack.añadirCerveza(cerveza);
+        }
+    }
+
     public SixPack generarSixpack(Filtro filtro, ArrayList<Cerveza> primerFiltro, String caso){
         this.caso=caso;
         this.repetidas=filtro.getRepetidas();
