@@ -18,7 +18,6 @@ public class BinarySearchTree {
             key = item;
             left = right = null;
         }
-
         // getters and setters
         public Cerveza getKey() {
             return key;
