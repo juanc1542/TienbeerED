@@ -46,6 +46,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
     private FiltrosViewModel mViewModel;
     private CheckBox checkNacionalidad, checkTipo, checkPrecio, checkAlcohol;
     private Button btnFiltrar;
+    private String funcionalidad="";
     private Spinner spiNacionalidad,spiTipo,spiPrecio,spiAlcohol;
     private NavController navController= null;
     private Switch switchRepetidas;
@@ -53,6 +54,18 @@ public class Filtros extends Fragment implements View.OnClickListener{
     private DatabaseReference DBref;
     ArrayList<Cerveza> cervezas = new ArrayList<>();
     ArrayList<Cerveza> cervezasPrimerFiltro = new ArrayList<>();
+
+
+    /*cuando se acciona cada uno de los botones antes de mandar la pantalla de filtros, modificará la
+    funcionalidad "r" si viene de full random "a" si viene de 3&3*/
+
+    public String getFuncionalidad() {
+        return funcionalidad;
+    }
+
+    public void setFuncionalidad(String funcionalidad) {
+        this.funcionalidad = funcionalidad;
+    }
 
     public static Filtros newInstance() {
         return new Filtros();
@@ -81,10 +94,10 @@ public class Filtros extends Fragment implements View.OnClickListener{
         String[] arrayPrecio = {"Economica","Intermedia","Cara"};
         String[] arrayAlcohol = {"Sin Alcohol", "Menor a 4.5%", "Entre 4.5% y 8%", "Mayor a 8%"};
 
-        ArrayAdapter<String> adapNacionalidad = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, arrayNac);
-        ArrayAdapter<String> adapTipo = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, arrayTipo);
-        ArrayAdapter<String> adapPrecio = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, arrayPrecio);
-        ArrayAdapter<String> adapAlcohol = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, arrayAlcohol);
+        ArrayAdapter<String> adapNacionalidad = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, arrayNac);
+        ArrayAdapter<String> adapTipo = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, arrayTipo);
+        ArrayAdapter<String> adapPrecio = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, arrayPrecio);
+        ArrayAdapter<String> adapAlcohol = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, arrayAlcohol);
 
 
         spiNacionalidad.setAdapter(adapNacionalidad);
@@ -205,14 +218,19 @@ public class Filtros extends Fragment implements View.OnClickListener{
             filtroF=listaPreferencias.asignTo2DArray();
 
             for (int i = 0; i < 4; i++) {
-                if(filtroF[i][0].equals("Nacionalidad")){
-                    filtroF[i][1]=nacionalidadFiltro;
-                }else if(filtroF[i][0].equals("Tipo")){
-                    filtroF[i][1]=tipoFiltro;
-                }else if(filtroF[i][0].equals("Alcohol")){
-                    filtroF[i][1]=alcoholFiltro;
-                }else if(filtroF[i][0].equals("Precio")){
-                    filtroF[i][1]=precioFiltro;
+                switch (filtroF[i][0]) {
+                    case "Nacionalidad":
+                        filtroF[i][1] = nacionalidadFiltro;
+                        break;
+                    case "Tipo":
+                        filtroF[i][1] = tipoFiltro;
+                        break;
+                    case "Alcohol":
+                        filtroF[i][1] = alcoholFiltro;
+                        break;
+                    case "Precio":
+                        filtroF[i][1] = precioFiltro;
+                        break;
                 }
             }
 
@@ -248,7 +266,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
             Filtro filtroFinal= new Filtro(filtroF,repetidas);
 
             SixPackGenerator sixPack= new SixPackGenerator();
-            SixPack newSix= sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,"r");
+            SixPack newSix= sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,funcionalidad);
             Cerveza beer[] = newSix.getSixpack();
             ArrayList<String> transpasoFragment=new ArrayList<>(6);
 

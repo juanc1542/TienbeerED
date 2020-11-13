@@ -39,6 +39,12 @@ public class SixPackGenerator {
     para llenar el sixpack y finalmente retornarlo
      */
 
+    public void añadirCerveza(Cerveza cerveza){
+        if(!this.sixpack.lleno()){
+            this.sixpack.añadirCerveza(cerveza);
+        }
+    }
+
     public SixPack generarSixpack(Filtro filtro, ArrayList<Cerveza> primerFiltro, String caso){
         this.caso=caso;
         this.repetidas=filtro.getRepetidas();
@@ -56,6 +62,7 @@ public class SixPackGenerator {
                     this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
                     currentP++;
                 }
+                //Enviar sixpack al carrito de compra
                 break;
             //caso hasta llenar 3
             case "a":
@@ -63,12 +70,11 @@ public class SixPackGenerator {
                     this.setSeleccionClon(seleccion);
                     this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
                     currentP++;
-                    //llevar a una función para que el usuario escoja las otras 3 y prosiga con el chackout
                 }
                 break;
         }
-        System.out.println(sixpack.cantidad());
-        return sixpack;
+        System.out.println(sixpack.cantidad()); //solo para vizualizar cervezas
+        return sixpack; //regresa a la clase de UI filtros el sixpack
     }
 
     //A este metodo le entra el segundo filtro y la preferencia del usuario para este filtro
@@ -79,28 +85,28 @@ public class SixPackGenerator {
             while (itr.hasNext()){
                 String nacionalidadNext = itr.next().getNacionalidad();
                 //comprobar si está ya está en el sixpack
-                if(!nacionalidadNext.equals(preferencia) || this.sixpack.contiene(itr.next())){
+                if(!nacionalidadNext.equals(preferencia) || this.sixpack.contiene(itr.next())/*|| !this.sixpack.getInventario>0*/){
                     itr.remove();
                 }
             }
         }if (filtro.equals("Precio")){
             while (itr.hasNext()){
                 String precioNext = itr.next().getRangoPrecio();
-                if(!precioNext.equals(preferencia) || this.sixpack.contiene(itr.next())){
+                if(!precioNext.equals(preferencia) || this.sixpack.contiene(itr.next()) /*|| !this.sixpack.getInventario>0*/){
                     itr.remove();
                 }
             }
         }if (filtro.equals("Tipo")){
             while (itr.hasNext()){
                 String tipoNext = itr.next().getTipo();
-                if(!tipoNext.equals(preferencia) || this.sixpack.contiene(itr.next())){
+                if(!tipoNext.equals(preferencia) || this.sixpack.contiene(itr.next())/*|| !this.sixpack.getInventario>0*/){
                     itr.remove();
                 }
             }
         }if (filtro.equals("Alcohol")) {
             while (itr.hasNext()) {
                 String alcoholNext = itr.next().getAlcohol();
-                if (!alcoholNext.equals(preferencia) || this.sixpack.contiene(itr.next())) {
+                if (!alcoholNext.equals(preferencia) || this.sixpack.contiene(itr.next())/*|| !this.sixpack.getInventario>0*/) {
                     itr.remove();
                 }
             }
