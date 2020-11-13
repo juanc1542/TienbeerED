@@ -56,6 +56,7 @@ public class SixPackGenerator {
                     this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
                     currentP++;
                 }
+                //Enviar sixpack al carrito de compra
                 break;
             //caso hasta llenar 3
             case "a":
@@ -63,12 +64,11 @@ public class SixPackGenerator {
                     this.setSeleccionClon(seleccion);
                     this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
                     currentP++;
-                    //llevar a una función para que el usuario escoja las otras 3 y prosiga con el chackout
                 }
                 break;
         }
-        System.out.println(sixpack.cantidad());
-        return sixpack;
+        System.out.println(sixpack.cantidad()); //solo para vizualizar cervezas
+        return sixpack; //regresa a la clase de UI filtros el sixpack
     }
 
     //A este metodo le entra el segundo filtro y la preferencia del usuario para este filtro
