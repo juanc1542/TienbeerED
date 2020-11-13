@@ -10,16 +10,18 @@ public class Cerveza {
     private String rangoPrecio;
     private String tipo;
     private String alcohol;
+    private int Cantidad;
 
     public Cerveza(){}
     //Metodo constructor
-    public Cerveza(String Nombre,String Nacionalidad,int Precio,String rangoPrecio, String Tipo, String Alcohol){
+    public Cerveza(String Nombre,String Nacionalidad,int Precio,String rangoPrecio, String Tipo, String Alcohol,int Cantidad){
         this.nombre= Nombre;
         this.nacionalidad= Nacionalidad;
         this.precio= Precio;
         this.rangoPrecio=rangoPrecio;
         this.tipo= Tipo;
         this.alcohol= Alcohol;
+        this.Cantidad=Cantidad;
     }
 
     //Metodo para subir el arreglo de informacion a la base de datos
@@ -79,4 +81,6 @@ public class Cerveza {
     public void setAlcohol(String alcohol) {
         this.alcohol = alcohol;
     }
+    public int getCantidad() {return Cantidad;}
+    public void setCantidad(int Cantidad){ this.Cantidad = Cantidad;}
 }
