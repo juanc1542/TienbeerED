@@ -266,6 +266,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
             Filtro filtroFinal= new Filtro(filtroF,repetidas);
 
             SixPackGenerator sixPack= new SixPackGenerator();
+            /* Cada botón debe darle valor a funcionalidad dependiendo si es 3&3 o full random*/
             SixPack newSix= sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,funcionalidad);
             Cerveza beer[] = newSix.getSixpack();
             ArrayList<String> transpasoFragment=new ArrayList<>(6);
