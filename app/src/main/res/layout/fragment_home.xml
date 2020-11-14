@@ -29,7 +29,7 @@
         android:id="@+id/btn3y3"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#FFFABD28"
         android:fontFamily="@font/quicksand"
@@ -39,6 +39,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
