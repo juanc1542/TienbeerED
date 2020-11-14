@@ -13,7 +13,7 @@
         android:layout_height="43dp"
         android:layout_marginTop="6dp"
         android:background="@drawable/button_rounded"
-        android:backgroundTint="#FDFDA729"
+        android:backgroundTint="#FABD28"
         android:fontFamily="@font/quicksand"
         android:text="@string/crea_un_nuevo_six_pack"
         android:textAlignment="center"
@@ -30,7 +30,8 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="6dp"
-        android:backgroundTint="#FDFDA729"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#FFFABD28"
         android:fontFamily="@font/quicksand"
         android:text="@string/_3_3"
         android:textAlignment="center"
@@ -39,15 +40,15 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        android:background="@drawable/button_rounded"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/btnDejanos"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="6dp"
-        android:backgroundTint="#FDFDA729"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#FFFABD28"
         android:fontFamily="@font/quicksand"
         android:text="@string/dejanos_sorprenderte"
         android:textAlignment="center"
@@ -57,8 +58,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        android:background="@drawable/button_rounded"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <TextView
         android:id="@+id/textView3"
@@ -109,13 +109,12 @@
         android:id="@+id/imageView2"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginTop="15dp"
         android:contentDescription="@string/crea_tu_propio_sixpack_desde_cero"
         android:src="@drawable/beer"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
