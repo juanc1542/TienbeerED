@@ -65,6 +65,13 @@ public class Logueo extends AppCompatActivity implements View.OnClickListener{
         }*/
     }
 
+    public void onClickRegistro(View v) {
+        Intent next = new Intent(this, RegistroActivity.class);
+        startActivity(next);
+    }
+
+
+
 
 
     private void loguearUsuario() {

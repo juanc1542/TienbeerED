@@ -1,11 +1,24 @@
 package com.example.tienbeerv20.Data;
 
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
     private int identificacion;
     private String email;
-    private String password;
     private int phone;
-    private String userAdress;
+    //private String password;
+    //private String userAdress;
+
+    public void subirFire(DatabaseReference mDatabase){
+        Map<String,Object> personalMap = new HashMap<>();
+        personalMap.put("Mail", email);
+        personalMap.put("Identificacion", identificacion);
+        personalMap.put("Phone", phone);
+        mDatabase.child("Usuarios").push().setValue(personalMap);
+    }
 
     public int getIdentificacion() {
         return identificacion;
@@ -23,13 +36,20 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
+    /*public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
+
+        public String getUserAdress() {
+        return userAdress;
     }
+
+    public void setUserAdress(String userAdress) {
+        this.userAdress = userAdress;
+    }
+    }*/
 
     public int getPhone() {
         return phone;
@@ -39,11 +59,5 @@ public class User {
         this.phone = phone;
     }
 
-    public String getUserAdress() {
-        return userAdress;
-    }
 
-    public void setUserAdress(String userAdress) {
-        this.userAdress = userAdress;
-    }
 }

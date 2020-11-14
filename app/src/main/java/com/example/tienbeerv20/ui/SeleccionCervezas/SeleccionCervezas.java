@@ -34,12 +34,9 @@ public class SeleccionCervezas extends Fragment {
 
         ArrayList<String> cervezasRecibidas= getArguments().getStringArrayList("key");
 
-        System.out.println(cervezasRecibidas.get(0));
-        System.out.println(cervezasRecibidas.get(1));
-        System.out.println(cervezasRecibidas.get(2));
-        System.out.println(cervezasRecibidas.get(3));
-        System.out.println(cervezasRecibidas.get(4));
-        System.out.println(cervezasRecibidas.get(5));
+        for(int i=0; i<cervezasRecibidas.size();i++){
+            System.out.println(cervezasRecibidas.get(i));
+        }
 
         TextView cer1 = v.findViewById(R.id.cerveza1);
         TextView cer2 = v.findViewById(R.id.cerveza2);
@@ -51,9 +48,11 @@ public class SeleccionCervezas extends Fragment {
         cer1.setText(cervezasRecibidas.get(0));
         cer2.setText(cervezasRecibidas.get(1));
         cer3.setText((cervezasRecibidas.get(2)));
-        cer4.setText(cervezasRecibidas.get(3));
-        cer5.setText(cervezasRecibidas.get(4));
-        cer6.setText(cervezasRecibidas.get(5));
+        if(cervezasRecibidas.size()>3){
+            cer4.setText(cervezasRecibidas.get(3));
+            cer5.setText(cervezasRecibidas.get(4));
+            cer6.setText(cervezasRecibidas.get(5));
+        }
 
         return v;
     }
