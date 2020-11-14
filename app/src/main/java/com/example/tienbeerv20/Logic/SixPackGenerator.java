@@ -39,7 +39,7 @@ public class SixPackGenerator {
     para llenar el sixpack y finalmente retornarlo
      */
 
-    public void añadirCerveza(Cerveza cerveza, SixPack sixpack){
+    public static void añadirCerveza(Cerveza cerveza, SixPack sixpack){
         if(sixpack.lleno()){
             sixpack.añadirCerveza(cerveza);
         }
