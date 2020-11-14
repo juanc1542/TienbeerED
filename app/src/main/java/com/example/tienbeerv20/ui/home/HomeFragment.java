@@ -73,7 +73,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             test.generateAndUploadTestBeers(100);
             Toast.makeText(getActivity(), "salen 10k", Toast.LENGTH_LONG).show();
         }else if(v.getId()==todoyo.getId()){
-            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_busqueda);
+            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_busquedaCerveza);
         }
     }
 }

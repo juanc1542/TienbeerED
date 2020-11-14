@@ -55,7 +55,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
     ArrayList<Cerveza> cervezas = new ArrayList<>();
     ArrayList<Cerveza> cervezasPrimerFiltro = new ArrayList<>();
 
-
+    String datoSel;
     /*cuando se acciona cada uno de los botones antes de mandar la pantalla de filtros, modificará la
     funcionalidad "r" si viene de full random "a" si viene de 3&3*/
 
@@ -75,6 +75,10 @@ public class Filtros extends Fragment implements View.OnClickListener{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.filtros_fragment, container, false);
+        datoSel= getArguments().getString("llave");
+        Toast.makeText(getContext(), datoSel, Toast.LENGTH_SHORT).show();
+
+
         //Creacion y asignacion estandar de cada uno de los "botones" del fragment
         checkNacionalidad = view.findViewById(R.id.cbNac);
         checkTipo = view.findViewById(R.id.cbTipo);
@@ -267,22 +271,32 @@ public class Filtros extends Fragment implements View.OnClickListener{
 
             SixPackGenerator sixPack= new SixPackGenerator();
             /* Cada botón debe darle valor a funcionalidad dependiendo si es 3&3 o full random*/
-            SixPack newSix= sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,"r"/*cambiar por funcionalidad después*/);
+
+
+            SixPack newSix= sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,datoSel);
             Cerveza beer[] = newSix.getSixpack();
+
             ArrayList<String> transpasoFragment=new ArrayList<>(6);
 
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 3; i++) {
                 transpasoFragment.add(beer[i].getNombre()+" "+beer[i].getNacionalidad()+" "+beer[i].getRangoPrecio());
             }
             Toast.makeText(getContext(), transpasoFragment.get(0), Toast.LENGTH_SHORT).show();
             listaPreferencias.printNodes();
 
-            SeleccionCervezas fragment = new SeleccionCervezas();
-            Bundle bundle = new Bundle();
-            bundle.putStringArrayList("key",transpasoFragment);
-            fragment.setArguments(bundle);
-
-            Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_seleccionCervezas,bundle);
+            if(datoSel=="r") {
+                SeleccionCervezas fragment = new SeleccionCervezas();
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList("key", transpasoFragment);
+                fragment.setArguments(bundle);
+                Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_seleccionCervezas, bundle);
+            } else if(datoSel=="a"){
+                SeleccionCervezas fragment = new SeleccionCervezas();
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList("key", transpasoFragment);
+                fragment.setArguments(bundle);
+                Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_seleccionCervezas, bundle);
+            }
         }
 
 
