@@ -63,7 +63,14 @@ public class SixPackGenerator {
                     currentP++;
                 }
                 //Enviar sixpack al carrito de compra
-                break;
+                if(sixpack.lleno()){
+                    break;
+                }else{
+                    while(!sixpack.lleno()){
+                        sixpack.añadirCerveza(seleccion.get((int) Math.floor(Math.random()*seleccion.size())));
+                    }
+                    break;
+                }
             //caso hasta llenar 3
             case "a":
                 while(sixpack.cantidad()<3 && currentP<4){
@@ -71,7 +78,15 @@ public class SixPackGenerator {
                     this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
                     currentP++;
                 }
-                break;
+
+                if(sixpack.cantidad()==3){
+                    break;
+                }else{
+                    while(sixpack.cantidad()<3){
+                        sixpack.añadirCerveza(seleccion.get((int) Math.floor(Math.random()*seleccion.size())));
+                    }
+                    break;
+                }
         }
         return sixpack; //regresa a la clase de UI filtros el sixpack
     }
