@@ -1,5 +1,4 @@
 package com.example.tienbeerv20.Data;
-
 import com.google.firebase.database.DatabaseReference;
 
 public class Cerveza {

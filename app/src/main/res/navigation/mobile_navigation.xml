@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.tienbeerv20.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Arma tu SixPack"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_nav_filtro"
@@ -18,8 +18,8 @@
             app:popEnterAnim="@anim/fragment_fade_enter"
             app:popExitAnim="@anim/fragment_fade_exit" />
         <action
-            android:id="@+id/action_nav_home_to_busquedaCerveza"
-            app:destination="@id/busquedaCerveza" />
+            android:id="@+id/action_nav_home_to_busqueda"
+            app:destination="@id/busqueda" />
     </fragment>
 
     <fragment
@@ -65,8 +65,8 @@
             app:destination="@id/nav_home" />
     </fragment>
     <fragment
-        android:id="@+id/busquedaCerveza"
-        android:name="com.example.tienbeerv20.ui.BusquedaCervezas.BusquedaCerveza"
-        android:label="busqueda_cerveza_fragment"
-        tools:layout="@layout/busqueda_cerveza_fragment" />
+        android:id="@+id/busqueda"
+        android:name="com.example.tienbeerv20.ui.Busqueda.Busqueda"
+        android:label="Busqueda"
+        tools:layout="@layout/busqueda_fragment" />
 </navigation>
