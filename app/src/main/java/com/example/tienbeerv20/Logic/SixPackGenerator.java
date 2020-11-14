@@ -39,9 +39,9 @@ public class SixPackGenerator {
     para llenar el sixpack y finalmente retornarlo
      */
 
-    public void añadirCerveza(Cerveza cerveza){
-        if(!this.sixpack.lleno()){
-            this.sixpack.añadirCerveza(cerveza);
+    public void añadirCerveza(Cerveza cerveza, SixPack sixpack){
+        if(sixpack.lleno()){
+            sixpack.añadirCerveza(cerveza);
         }
     }
 
@@ -62,7 +62,7 @@ public class SixPackGenerator {
                     this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
                     currentP++;
                 }
-                //Enviar sixpack al carrito de compra
+                //En caso de que haya pocas cervezas
                 if(sixpack.lleno()){
                     break;
                 }else{
