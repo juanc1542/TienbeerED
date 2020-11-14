@@ -10,6 +10,7 @@ public class Tests {
     String[] arrayPrecio = {"Economica","Intermedia","Cara"};
     String[] arrayAlcohol = {"Sin Alcohol", "Menor a 4.5%", "Entre 4.5% y 8%", "Mayor a 8%"};
     Boolean[] arrayRepetidas = {true, false};
+    int[] arrayCantidad = {1,2,3,4,5,6,7,8,9,10};
 
     public void generateAndUploadTestBeers(int n){
         int precio = 0;
@@ -21,6 +22,7 @@ public class Tests {
             int precioIndex = rand.nextInt(arrayPrecio.length);
             int alcoholIndex = rand.nextInt(arrayAlcohol.length);
             int repetidasIndex = rand.nextInt(arrayRepetidas.length);
+            int cantidadIndex = rand.nextInt(arrayCantidad.length);
 
             if (precioIndex == 0){
                 precio = 1000;
@@ -30,11 +32,11 @@ public class Tests {
                 precio = 11000;
             }
 
-            //Cerveza cerveza = new Cerveza(nombre, arrayNac[nacIndex], precio, arrayPrecio[precioIndex], arrayTipo[tipoIndex], arrayAlcohol[alcoholIndex]);
+            Cerveza cerveza = new Cerveza(nombre, arrayNac[nacIndex], precio, arrayPrecio[precioIndex], arrayTipo[tipoIndex], arrayAlcohol[alcoholIndex],arrayCantidad[cantidadIndex]);
 
             //Metodo para subir el arreglo de informacion a la base de datos
             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-            //cerveza.subirCervezas(mDatabase);
+            cerveza.subirCervezas(mDatabase);
         }
     }
 }
