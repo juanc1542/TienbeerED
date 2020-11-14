@@ -275,6 +275,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
 
             SixPack newSix= sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,datoSel);
             Cerveza beer[] = newSix.getSixpack();
+
             ArrayList<String> transpasoFragment=new ArrayList<>(6);
 
             for (int i = 0; i < 6; i++) {
