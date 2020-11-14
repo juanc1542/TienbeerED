@@ -66,14 +66,13 @@ public class SixPackGenerator {
                 break;
             //caso hasta llenar 3
             case "a":
-                while(sixpack.cantidad()<=3 && currentP<4){
+                while(sixpack.cantidad()<3 && currentP<4){
                     this.setSeleccionClon(seleccion);
                     this.filter(filtro.getFiltros()[currentP][0], filtro.getFiltros()[currentP][1]);
                     currentP++;
                 }
                 break;
         }
-        System.out.println(sixpack.cantidad()); //solo para vizualizar cervezas
         return sixpack; //regresa a la clase de UI filtros el sixpack
     }
 
@@ -121,7 +120,7 @@ public class SixPackGenerator {
                     }
                     break;
                 case "a":
-                    while(sixpack.cantidad()<=3){
+                    while(sixpack.cantidad()<3){
                         //mientras que el sixpack no tenga 3, llena con las cervezas que quedaron del 2do filtro
                         sixpack.añadirCerveza(seleccionClon.get((int) Math.floor(Math.random()*seleccionClon.size())));
                     }
@@ -138,7 +137,7 @@ public class SixPackGenerator {
                     }
                     break;
                 case "a":
-                    while (sixpack.cantidad() <= 3 && !seleccionClon.isEmpty()) {
+                    while (sixpack.cantidad() < 3 && !seleccionClon.isEmpty()) {
                         //mientras que el sixpack no esté lleno, llena con las cervezas que quedaron del 2do filtro
                         int index=(int) Math.floor(Math.random()*(seleccionClon.size()-1));
                         sixpack.añadirCerveza(seleccionClon.get(index));

@@ -277,7 +277,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
             Cerveza beer[] = newSix.getSixpack();
             ArrayList<String> transpasoFragment=new ArrayList<>(6);
 
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 3; i++) {
                 transpasoFragment.add(beer[i].getNombre()+" "+beer[i].getNacionalidad()+" "+beer[i].getRangoPrecio());
             }
             Toast.makeText(getContext(), transpasoFragment.get(0), Toast.LENGTH_SHORT).show();
