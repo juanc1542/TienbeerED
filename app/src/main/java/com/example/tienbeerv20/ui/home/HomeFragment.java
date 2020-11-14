@@ -17,15 +17,19 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.example.tienbeerv20.Data.Filtro;
 import com.example.tienbeerv20.Data.Tests;
 import com.example.tienbeerv20.R;
+import com.example.tienbeerv20.ui.SeleccionCervezas.SeleccionCervezas;
 import com.example.tienbeerv20.ui.favoritos.FavoritosFragment;
+import com.example.tienbeerv20.ui.filtros.Filtros;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private HomeViewModel homeViewModel;
 
     private Button dejanos,tresytres,todoyo;
+    private String letraMagica;
 
     private NavController navController= null;
 
@@ -67,13 +71,29 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(v.getId()==dejanos.getId()){
-            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_filtro);
+            Filtros fragment = new Filtros();
+            letraMagica="r";
+            Bundle bundle = new Bundle();
+            bundle.putString("llave", letraMagica);
+            fragment.setArguments(bundle);
+            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_filtro,bundle);
         }else if(v.getId()==tresytres.getId()){
+            /*
             Tests test = new Tests();
             test.generateAndUploadTestBeers(100);
-            Toast.makeText(getActivity(), "salen 10k", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "salen 10k", Toast.LENGTH_LONG).show();*/
+
+            Filtros fragment = new Filtros();
+            letraMagica="a";
+            Bundle bundle = new Bundle();
+            bundle.putString("llave", letraMagica);
+            fragment.setArguments(bundle);
+            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_filtro, bundle);
+
         }else if(v.getId()==todoyo.getId()){
-            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_busquedaCerveza);
+
+
+            //Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_filtro, bundle);
         }
     }
 }
