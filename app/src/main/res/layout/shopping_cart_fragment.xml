@@ -8,10 +8,10 @@
     tools:context=".ui.ShoppingCart.ShoppingCart">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="470dp"
-        android:layout_height="831dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="373dp"
+        android:layout_height="610dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="72dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
