@@ -8,18 +8,43 @@
     android:backgroundTint="#FFFFFF"
     tools:context=".ui.login.Logueo">
 
-    <EditText
-        android:id="@+id/txtEmail"
-        android:layout_width="330dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Correo electronico"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Ingresa"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="154dp"
+        android:layout_height="158dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tienbeer_preview_rev_1" />
+
+    <TextView
+        android:id="@+id/butOlvido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="¿Olvidaste tu contraseña?"
+        android:textColor="#A8A8A8"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butLogeo" />
 
     <TextView
         android:id="@+id/textView12"
@@ -29,6 +54,7 @@
         android:layout_marginTop="20dp"
         android:clickable="true"
         android:focusable="true"
+        android:fontFamily="@font/quicksand_bold"
         android:text="@string/correo"
         android:textColor="#fec63d"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,19 +64,38 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/quicksand_bold"
         android:text="Contaseña"
         android:textColor="#FEC63D"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
+    <TextView
+        android:id="@+id/butRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/quicksand_bold"
+        android:onClick="onClickRegistro"
+        android:text="Registrate"
+        android:textColor="#fec63d"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butOlvido" />
+
     <EditText
         android:id="@+id/txtPass"
         android:layout_width="330dp"
         android:layout_height="51dp"
-        android:layout_marginTop="12dp"
         android:ems="10"
+        android:fontFamily="@font/quicksand_bold"
         android:hint="Contraseña"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,71 +107,40 @@
         android:id="@+id/butLogeo"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="#fec63d"
+        android:fontFamily="@font/quicksand_bold"
         android:onClick="onClick"
         android:text="Ingresar"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPass" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="72dp"
-        android:text="Ingresa"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:textStyle="bold"
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="330dp"
+        android:layout_height="51dp"
+        android:ems="10"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="Correo electronico"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="12dp"
+        android:fontFamily="@font/quicksand_bold"
         android:text="Que bueno verte otra vez"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/butOlvido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="¿Olvidaste tu contraseña?"
-        android:clickable="true"
-        android:textColor="#A8A8A8"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butLogeo"
-        android:focusable="true" />
-
-    <TextView
-        android:id="@+id/butRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:onClick="onClickRegistro"
-        android:text="Registrate"
-        android:textColor="#fec63d"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butOlvido" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

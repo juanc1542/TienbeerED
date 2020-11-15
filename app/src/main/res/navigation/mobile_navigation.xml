@@ -68,5 +68,9 @@
         android:id="@+id/busqueda"
         android:name="com.example.tienbeerv20.ui.Busqueda.Busqueda"
         android:label="Busqueda"
-        tools:layout="@layout/busqueda_fragment" />
+        tools:layout="@layout/busqueda_fragment" >
+        <action
+            android:id="@+id/action_busqueda_to_seleccionCervezas"
+            app:destination="@id/seleccionCervezas" />
+    </fragment>
 </navigation>
