@@ -51,6 +51,8 @@ public class Busqueda extends Fragment implements View.OnClickListener{
 
         recyclerOP = (RecyclerView) v.findViewById(R.id.rvBusqueda);
         recyclerOP.setLayoutManager(new LinearLayoutManager(getContext()));
+        seleccionBoton= getArguments().getString("llave");
+        System.out.println(seleccionBoton);
         displayCervezas(v);
         botonBuscar = (Button) v.findViewById(R.id.botonBuscar);
         editTextBusqueda =  (EditText) v.findViewById(R.id.editTextBusqueda);
