@@ -24,7 +24,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     private EditText TextMail, TextPassword, TextIdent, TextPhone;
     //private Button Registro;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth= FirebaseAuth.getInstance();
     private DatabaseReference mDatabase;
     private ProgressDialog progressDialog;
     private User users= new User();
@@ -52,8 +52,7 @@ public class RegistroActivity extends AppCompatActivity {
         //Recopilar info de la caja de texto
         final String email= TextMail.getText().toString().trim();
         final String password= TextPassword.getText().toString().trim();
-        final String identif= TextIdent.getText().toString().trim();
-        final int identificacion = Integer.parseInt(identif);
+        final String ident= TextIdent.getText().toString().trim();
         final String phone= TextPhone.getText().toString().trim();
 
 
@@ -70,6 +69,16 @@ public class RegistroActivity extends AppCompatActivity {
             return;
         }
 
+        if(TextUtils.isEmpty(ident)){
+            Toast.makeText(this,"Falta ingresar la identificacion",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(TextUtils.isEmpty(phone)){
+            Toast.makeText(this,"Falta ingresar el numero de telefono",Toast.LENGTH_LONG).show();
+            return;
+        }
+
         progressDialog.setMessage("Realizando registro en linea...");
         progressDialog.show();
 
@@ -83,7 +92,8 @@ public class RegistroActivity extends AppCompatActivity {
 
                             Toast.makeText(RegistroActivity.this,"Se ha registrado el usuario con el email: "+ TextMail.getText(),Toast.LENGTH_LONG).show();
                             users.setEmail(email);
-                            users.setIdentificacion(identificacion);
+                            users.setIdentificacion(ident);
+                            users.setPhone(phone);
                             users.subirFire(mDatabase);
                             Intent inicio = new Intent(getApplicationContext(),Logueo.class);
                             startActivity(inicio);

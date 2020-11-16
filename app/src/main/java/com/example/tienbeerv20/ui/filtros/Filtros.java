@@ -274,8 +274,12 @@ public class Filtros extends Fragment implements View.OnClickListener{
 
 
             SixPack newSix= sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,datoSel);
-            Cerveza beer[] = newSix.getSixpack();
+            Cerveza[] beer = newSix.getSixpack();
 
+            ArrayList<Cerveza> transpasoFragment=new ArrayList<>(6);
+
+
+            /*
             ArrayList<String> transpasoFragment=new ArrayList<>(6);
 
             for (int i = 0; i < 3; i++) {
@@ -283,19 +287,27 @@ public class Filtros extends Fragment implements View.OnClickListener{
             }
             Toast.makeText(getContext(), transpasoFragment.get(0), Toast.LENGTH_SHORT).show();
             listaPreferencias.printNodes();
-
+*/
             if(datoSel=="r") {
+                for (int i = 0; i < 6; i++) {
+                    transpasoFragment.add(beer[i]);
+                }
+
                 SeleccionCervezas fragment = new SeleccionCervezas();
                 Bundle bundle = new Bundle();
-                bundle.putStringArrayList("key", transpasoFragment);
+                bundle.putSerializable("key", transpasoFragment);
                 fragment.setArguments(bundle);
                 Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_seleccionCervezas, bundle);
             } else if(datoSel=="a"){
+                for (int i = 0; i < 3; i++) {
+                    transpasoFragment.add(beer[i]);
+                }
+
                 SeleccionCervezas fragment = new SeleccionCervezas();
                 Bundle bundle = new Bundle();
-                bundle.putStringArrayList("key", transpasoFragment);
+                bundle.putSerializable("key", transpasoFragment);
                 fragment.setArguments(bundle);
-                Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_seleccionCervezas, bundle);
+                Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_busqueda, bundle);
             }
         }
 

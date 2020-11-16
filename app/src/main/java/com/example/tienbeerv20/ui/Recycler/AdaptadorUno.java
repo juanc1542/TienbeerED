@@ -35,6 +35,8 @@ public class AdaptadorUno extends RecyclerView.Adapter<AdaptadorUno.ViewHolderCe
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bloque_adaptador,parent,false);
 
         return new AdaptadorUno.ViewHolderCervezas(view);
+
+
     }
 
     @Override
@@ -52,22 +54,18 @@ public class AdaptadorUno extends RecyclerView.Adapter<AdaptadorUno.ViewHolderCe
             public void onClick(View v) {
                 if (seleccionados.size() <= 5){
                     seleccionados.add(listaCerveza.get(position));
-                Toast.makeText(v.getContext(), "Elegiste "+listaCerveza.get(position).getNombre()+", llevas "+listaCerveza.size(), Toast.LENGTH_SHORT).show();
-            } else if(seleccionados.size()==6){
+                Toast.makeText(v.getContext(), "Elegiste "+listaCerveza.get(position).getNombre()+", llevas "+seleccionados.size(), Toast.LENGTH_SHORT).show();
+            } else {
                     SeleccionCervezas fragment = new SeleccionCervezas();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("key", seleccionados);
                     fragment.setArguments(bundle);
-                    Navigation.findNavController(v).navigate(R.id.action_busqueda_to_seleccionCervezas);
+                    Navigation.findNavController(v).navigate(R.id.action_busqueda_to_seleccionCervezas,bundle);
                 }
             }
         });
 
     }
-
-
-
-
 
     @Override
     public int getItemCount() {

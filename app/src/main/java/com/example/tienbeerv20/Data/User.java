@@ -1,14 +1,15 @@
 package com.example.tienbeerv20.Data;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class User {
-    private int identificacion;
+    private String identificacion;
     private String email;
-    private int phone;
+    private String phone;
     //private String password;
     //private String userAdress;
 
@@ -17,14 +18,20 @@ public class User {
         personalMap.put("Mail", email);
         personalMap.put("Identificacion", identificacion);
         personalMap.put("Phone", phone);
-        mDatabase.child("Usuarios").push().setValue(personalMap);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        //mDatabase= FirebaseDatabase.getInstance().getReference().child("Usuarios").push().setValue(personalMap);
+
+        String id = mDatabase.child("Usuarios").push().getKey();
+        mDatabase.child("Usuarios").child(id).setValue(personalMap);
+
+        //mDatabase.child("Usuarios").push().setValue(personalMap);
     }
 
-    public int getIdentificacion() {
+    public String getIdentificacion() {
         return identificacion;
     }
 
-    public void setIdentificacion(int identificacion) {
+    public void setIdentificacion(String identificacion) {
         this.identificacion = identificacion;
     }
 
@@ -51,11 +58,11 @@ public class User {
     }
     }*/
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
