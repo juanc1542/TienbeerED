@@ -59,9 +59,9 @@ public class BinarySearchTree{
     }
 
     //A function that constructs BST from array (sorted or not)
-    public Node llenar(ArrayList<Cerveza> cervezas){
+    public void llenar(ArrayList<Cerveza> cervezas){
         Collections.sort(cervezas, Cerveza.cervezaNombreComparator);
-        return sortedArrayToBST(cervezas, 0, cervezas.size()-1);
+        root = sortedArrayToBST(cervezas, 0, cervezas.size()-1);
     }
     /* A function that constructs Balanced Binary Search Tree
      from a sorted array */
