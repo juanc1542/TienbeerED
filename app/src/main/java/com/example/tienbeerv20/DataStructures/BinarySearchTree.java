@@ -74,11 +74,11 @@ public class BinarySearchTree {
         }
 
         /* Otherwise, recur down the tree */
-        int comparator = root.key.getNombre().compareTo(key.getNombre());
-        if (comparator < 0)
-            root.left = insertRec(root.left, key);
-        else if (comparator > 0)
-            root.right = insertRec(root.right, key);
+        int comparator = root.getKey().getNombre().compareTo(key.getNombre());
+        if (comparator > 0)
+            root.setLeft(insertRec(root.getLeft(), key));
+        else if (comparator < 0)
+            root.setRight(insertRec(root.getRight(), key));
 
         /* return the (unchanged) node pointer */
         return root;
@@ -89,7 +89,7 @@ public class BinarySearchTree {
         // Base Cases: root is null or key is present at root
         // if root is null (key is not found) return null
         // if key is present at root, return the OBJECT beer
-        if (root==null || root.key.getNombre().equals(key))
+        if (root.key.getNombre().equals(key) || root==null )
             return root;
 
         // Comparator

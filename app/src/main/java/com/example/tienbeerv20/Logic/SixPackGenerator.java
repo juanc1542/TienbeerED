@@ -40,7 +40,7 @@ public class SixPackGenerator {
      */
 
     public static void añadirCerveza(Cerveza cerveza, SixPack sixpack){
-        if(sixpack.lleno()){
+        if(!sixpack.lleno()){
             sixpack.añadirCerveza(cerveza);
         }
     }

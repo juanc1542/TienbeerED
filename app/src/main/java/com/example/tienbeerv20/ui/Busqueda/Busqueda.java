@@ -53,7 +53,7 @@ public class Busqueda extends Fragment implements View.OnClickListener{
 
     private BinarySearchTree bst;
 
-    private ArrayList<Cerveza> Filtrado;
+    private ArrayList<Cerveza> Filtrado = new ArrayList<Cerveza>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -104,9 +104,11 @@ public class Busqueda extends Fragment implements View.OnClickListener{
         if(v.getId()==botonBuscar.getId()){
             stringTextBusqueda = editTextBusqueda.getText().toString();
 
-            bst.search(bst.getRoot(), stringTextBusqueda);
-
+            //bst.search(bst.getRoot(), stringTextBusqueda);
             Filtrado.add(bst.search(bst.getRoot(), stringTextBusqueda).getKey());
+            for(Cerveza cerveza:Filtrado){
+                System.out.println(cerveza.getNombre());
+            }
         }
     }
 
