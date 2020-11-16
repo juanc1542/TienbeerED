@@ -23,13 +23,18 @@ import com.example.tienbeerv20.Data.Tests;
 import com.example.tienbeerv20.R;
 import com.example.tienbeerv20.ui.Recycler.AdaptadorDos;
 import com.example.tienbeerv20.ui.Recycler.AdaptadorUno;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class Busqueda extends Fragment implements View.OnClickListener{
 
     RecyclerView recyclerOP;
-    private ArrayList<Cerveza> ops = new ArrayList<Cerveza>();
+    private ArrayList<Cerveza> ops1 = new ArrayList<Cerveza>();
 
     private BusquedaViewModel mViewModel;
     String seleccionBoton;
@@ -52,10 +57,15 @@ public class Busqueda extends Fragment implements View.OnClickListener{
         recyclerOP = (RecyclerView) v.findViewById(R.id.rvBusqueda);
         recyclerOP.setLayoutManager(new LinearLayoutManager(getContext()));
         seleccionBoton= getArguments().getString("llave");
-        System.out.println(seleccionBoton);
-        displayCervezas(v);
+        ops1= (ArrayList<Cerveza>) getArguments().getSerializable("llaveArreglo");
         botonBuscar = (Button) v.findViewById(R.id.botonBuscar);
         editTextBusqueda =  (EditText) v.findViewById(R.id.editTextBusqueda);
+        System.out.println(seleccionBoton);
+
+        displayCervezas(v);
+
+
+
         return v;
     }
 
@@ -82,17 +92,20 @@ public class Busqueda extends Fragment implements View.OnClickListener{
 
 
     public void displayCervezas(View view){
+
+
+        /*
         Cerveza beer = new Cerveza("Poker", "Colombiana", 3000, "$$", "Lager", "Mas de 8", 10);
         Cerveza beer2 = new Cerveza("Aguila", "Colombiana", 3000, "$$", "Lager", "Mas de 8", 10);
 
         ops.add(beer);
         ops.add(beer2);
-
+*/
         if(seleccionBoton.equals("GeneracionManual")){
-            AdaptadorUno adapter1 = new AdaptadorUno(ops);
+            AdaptadorUno adapter1 = new AdaptadorUno(ops1);
             recyclerOP.setAdapter(adapter1);
         } else if (seleccionBoton.equals("GeneracionAMedias")){
-            AdaptadorDos adapter2 = new AdaptadorDos(ops);
+            AdaptadorDos adapter2 = new AdaptadorDos(ops1);
             recyclerOP.setAdapter(adapter2);
         }
     }

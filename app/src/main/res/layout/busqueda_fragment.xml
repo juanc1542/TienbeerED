@@ -57,6 +57,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#FFC107"
         android:fontFamily="@font/quicksand"
+        android:onClick="displayCervezas"
         android:text="Buscar"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

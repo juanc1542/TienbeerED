@@ -17,18 +17,32 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.example.tienbeerv20.Data.Cerveza;
 import com.example.tienbeerv20.Data.Tests;
 import com.example.tienbeerv20.R;
 import com.example.tienbeerv20.ui.SeleccionCervezas.SeleccionCervezas;
 import com.example.tienbeerv20.ui.favoritos.FavoritosFragment;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private HomeViewModel homeViewModel;
 
+    ArrayList<Cerveza> ops = new ArrayList<Cerveza>();
+
+
     private Button dejanos,tresytres,todoyo;
 
     private NavController navController= null;
+
+    private FirebaseDatabase BD;
+    private DatabaseReference DBref;
 
     String llaveSeleccion;
 
@@ -54,7 +68,31 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+
+        BD = FirebaseDatabase.getInstance();
+        DBref = BD.getReference("Cervezas");
+        DBref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    ops.add(ds.getValue(Cerveza.class));
+                    System.out.println("AYUDAAAAA"+ops.get(0).getNacionalidad());
+                    //Toast.makeText(getContext(), "Conexion Exitosa", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
         return root;
+
+
+
+
+
+
     }
 
     @Override
@@ -82,6 +120,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             SeleccionCervezas fragment = new SeleccionCervezas();
             Bundle bundle = new Bundle();
             bundle.putString("llave", llaveSeleccion);
+            bundle.putSerializable("llaveArreglo", ops);
             fragment.setArguments(bundle);
             Navigation.findNavController(v).navigate(R.id.action_nav_home_to_busqueda,bundle);
             //No se va directamente a los filtros porque el RecycledView no permite recibir informacion del activity
@@ -93,6 +132,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             SeleccionCervezas fragment = new SeleccionCervezas();
             Bundle bundle = new Bundle();
             bundle.putString("llave", llaveSeleccion);
+            bundle.putSerializable("llaveArreglo", ops);
             fragment.setArguments(bundle);
             Navigation.findNavController(v).navigate(R.id.action_nav_home_to_busqueda,bundle);
         }
