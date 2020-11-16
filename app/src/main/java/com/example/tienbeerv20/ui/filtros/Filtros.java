@@ -56,7 +56,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
     ArrayList<Cerveza> cervezasPrimerFiltro = new ArrayList<>();
 
     String datoSel;
-    private ArrayList<Cerveza> Parcelable;
+    private ArrayList<Cerveza> Parcelable,cervezasBusqueda;
     /*cuando se acciona cada uno de los botones antes de mandar la pantalla de filtros, modificará la
     funcionalidad "r" si viene de full random "a" si viene de 3&3*/
 
@@ -76,7 +76,14 @@ public class Filtros extends Fragment implements View.OnClickListener{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.filtros_fragment, container, false);
+
         datoSel= getArguments().getString("llave");
+        if(datoSel==null){
+            datoSel= getArguments().getString("keyxd2");
+        }
+
+        cervezasBusqueda= (ArrayList<Cerveza>) getArguments().getSerializable("keyxd");
+
         Toast.makeText(getContext(), datoSel, Toast.LENGTH_SHORT).show();
 
 
@@ -203,6 +210,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
     //Tambien se realiza la transicion al siguiente fragment
     @Override
     public void onClick(View v) {
+
         boolean repetidas=false;
         String[][] filtroF;
 
@@ -267,7 +275,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
                     }
                     break;
             }
-
+            System.out.println(datoSel);
             Filtro filtroFinal= new Filtro(filtroF,repetidas);
 
             SixPackGenerator sixPack= new SixPackGenerator();
@@ -280,7 +288,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
 
             ArrayList<Cerveza> transpasoFragment= new ArrayList<>();
 
-            System.out.println(datoSel);
+
             /*
             ArrayList<String> transpasoFragment=new ArrayList<>(6);
 
@@ -303,9 +311,14 @@ public class Filtros extends Fragment implements View.OnClickListener{
 
 
             } else if(datoSel=="a"){
+
                 for (int i = 0; i < 3; i++) {
                     transpasoFragment.add(beer[i]);
                     System.out.println(transpasoFragment.get(i).getNacionalidad());
+                }
+
+                for(int i = 0; i < 3; i++){
+                    transpasoFragment.add(cervezasBusqueda.get(i));
                 }
 
                 SeleccionCervezas fragment = new SeleccionCervezas();

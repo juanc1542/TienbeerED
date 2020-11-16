@@ -50,13 +50,14 @@ public class AdaptadorDos extends RecyclerView.Adapter<AdaptadorDos.ViewHolderCe
         holder.btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (seleccionados.size() <= 3){
+                if (seleccionados.size() < 3){
                     seleccionados.add(listaCerveza.get(position));
                 Toast.makeText(v.getContext(), "Elegiste "+listaCerveza.get(position).getNombre()+", llevas "+seleccionados.size(), Toast.LENGTH_SHORT).show();
-            } else {
+            } else if(seleccionados.size() >= 3){
                     SeleccionCervezas fragment = new SeleccionCervezas();
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("key", seleccionados);
+                    bundle.putSerializable("keyxd", seleccionados);
+                    bundle.putSerializable("keyxd2", "a");
                     fragment.setArguments(bundle);
                     Navigation.findNavController(v).navigate(R.id.action_busqueda_to_nav_filtro,bundle);
                 }

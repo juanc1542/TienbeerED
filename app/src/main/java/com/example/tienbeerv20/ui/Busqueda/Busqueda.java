@@ -65,7 +65,7 @@ public class Busqueda extends Fragment {
         if(seleccionBoton.equals("GeneracionManual")){
             AdaptadorUno adapter1 = new AdaptadorUno(ops);
             recyclerOP.setAdapter(adapter1);
-        } if (seleccionBoton.equals("GeneracionAMedias")){
+        } else if (seleccionBoton.equals("GeneracionAMedias")){
             AdaptadorDos adapter2 = new AdaptadorDos(ops);
             recyclerOP.setAdapter(adapter2);
         }
