@@ -45,7 +45,7 @@ public class BinarySearchTree {
     private Node root;
 
     // Constructor
-    BinarySearchTree() {
+    public BinarySearchTree() {
         root = null;
     }
 
@@ -85,15 +85,15 @@ public class BinarySearchTree {
     }
 
 
-    public Node search(Node root, Cerveza key) {
+    public Node search(Node root, String key) {
         // Base Cases: root is null or key is present at root
-        // if is null (key is not found) return null
+        // if root is null (key is not found) return null
         // if key is present at root, return the OBJECT beer
-        if (root==null || root.key==key)
+        if (root==null || root.key.getNombre().equals(key))
             return root;
 
         // Comparator
-        int comparator = root.key.getNombre().compareTo(key.getNombre());
+        int comparator = root.key.getNombre().compareTo(key);
 
         // Key is greater than root's key
         if (comparator < 0)
