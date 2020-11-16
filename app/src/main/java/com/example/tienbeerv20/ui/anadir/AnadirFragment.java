@@ -30,7 +30,7 @@ public class AnadirFragment extends Fragment {
     private AnadirViewModel mViewModel;
     DatabaseReference mDatabase;
     private Spinner spiNacionalidad,spiPrecio,spiTipo,spiAlcohol;
-    private EditText TextNombre, TextPrecio, TextCantidad;
+    private EditText TextNombre, TextPrecio, TextCantidad,TextTest;
     private Button SUBIR,subirCien;
 
     public static AnadirFragment newInstance() {
@@ -52,6 +52,7 @@ public class AnadirFragment extends Fragment {
         spiNacionalidad = (Spinner) view.findViewById(R.id.ANspinnerNacionalidad);
         TextPrecio = (EditText) view.findViewById(R.id.ANtextPrecio);
         TextCantidad= (EditText) view.findViewById(R.id.ANcantidadCervezas);
+        TextTest= (EditText) view.findViewById(R.id.cantidadTest);
         spiTipo = (Spinner) view.findViewById(R.id.ANspinnerTipo);
         spiAlcohol = (Spinner) view.findViewById(R.id.ANspinnerAlcohol);
 
@@ -86,9 +87,10 @@ public class AnadirFragment extends Fragment {
         subirCien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int cantidadSubida = Integer.parseInt(TextTest.getText().toString().trim());
                 Tests test = new Tests();
-                test.generateAndUploadTestBeers(100);
-                Toast.makeText(getActivity(),"Se han subido 100",Toast.LENGTH_LONG).show();
+                test.generateAndUploadTestBeers(cantidadSubida);
+                Toast.makeText(getActivity(),"Se han subido "+cantidadSubida,Toast.LENGTH_LONG).show();
             }
         });
 
