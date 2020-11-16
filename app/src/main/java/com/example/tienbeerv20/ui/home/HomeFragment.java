@@ -19,6 +19,7 @@ import androidx.navigation.Navigation;
 
 import com.example.tienbeerv20.Data.Tests;
 import com.example.tienbeerv20.R;
+import com.example.tienbeerv20.ui.SeleccionCervezas.SeleccionCervezas;
 import com.example.tienbeerv20.ui.favoritos.FavoritosFragment;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -28,6 +29,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private Button dejanos,tresytres,todoyo;
 
     private NavController navController= null;
+
+    String llaveSeleccion;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -67,13 +70,31 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(v.getId()==dejanos.getId()){
-            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_filtro);
+            llaveSeleccion="r";
+            SeleccionCervezas fragment = new SeleccionCervezas();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("llave", llaveSeleccion);
+            fragment.setArguments(bundle);
+            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_filtro,bundle);
+
         }else if(v.getId()==tresytres.getId()){
-            Tests test = new Tests();
-            test.generateAndUploadTestBeers(100);
-            Toast.makeText(getActivity(), "salen 10k", Toast.LENGTH_LONG).show();
+            llaveSeleccion="GeneracionAMedias";
+            SeleccionCervezas fragment = new SeleccionCervezas();
+            Bundle bundle = new Bundle();
+            bundle.putString("llave", llaveSeleccion);
+            fragment.setArguments(bundle);
+            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_busqueda,bundle);
+            //No se va directamente a los filtros porque el RecycledView no permite recibir informacion del activity
+            //llaveSeleccion="a";
+            //Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_filtro,bundle);
+
         }else if(v.getId()==todoyo.getId()){
-            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_busqueda);
+            llaveSeleccion="GeneracionManual";
+            SeleccionCervezas fragment = new SeleccionCervezas();
+            Bundle bundle = new Bundle();
+            bundle.putString("llave", llaveSeleccion);
+            fragment.setArguments(bundle);
+            Navigation.findNavController(v).navigate(R.id.action_nav_home_to_busqueda,bundle);
         }
     }
 }

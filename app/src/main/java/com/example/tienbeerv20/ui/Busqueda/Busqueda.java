@@ -26,6 +26,7 @@ public class Busqueda extends Fragment {
     private ArrayList<Cerveza> ops = new ArrayList<Cerveza>();
 
     private BusquedaViewModel mViewModel;
+    String seleccionBoton;
 
     public static Busqueda newInstance() {
         return new Busqueda();
@@ -38,7 +39,11 @@ public class Busqueda extends Fragment {
 
         recyclerOP = (RecyclerView) v.findViewById(R.id.rvBusqueda);
         recyclerOP.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        seleccionBoton= getArguments().getString("llave");
+
         displayCervezas(v);
+
         return v;
     }
 
@@ -50,8 +55,10 @@ public class Busqueda extends Fragment {
     }
 
     public void displayCervezas(View view){
+
         Cerveza beer = new Cerveza("Poker","Colombiana",3000,"$$","Lager","Mas de 8",10);
         Cerveza beer2 = new Cerveza("Aguila","Colombiana",3000,"$$","Lager","Mas de 8",10);
+
         ops.add(beer);
         ops.add(beer2);
         AdaptadorUno adapter= new AdaptadorUno(ops);

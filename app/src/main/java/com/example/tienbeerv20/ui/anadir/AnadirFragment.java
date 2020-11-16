@@ -31,7 +31,7 @@ public class AnadirFragment extends Fragment {
     DatabaseReference mDatabase;
     private Spinner spiNacionalidad,spiPrecio,spiTipo,spiAlcohol;
     private EditText TextNombre, TextPrecio, TextCantidad;
-    private Button SUBIR;
+    private Button SUBIR,subirCien;
 
     public static AnadirFragment newInstance() {
         return new AnadirFragment();
@@ -72,6 +72,7 @@ public class AnadirFragment extends Fragment {
 
         //Asignacion de funcionalidades del boton
         SUBIR=(Button) view.findViewById(R.id.ANbuttonSubir);
+        subirCien=(Button) view.findViewById(R.id.ANbtnCien);
 
         SUBIR.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +83,14 @@ public class AnadirFragment extends Fragment {
             }
         });
 
+        subirCien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Tests test = new Tests();
+                test.generateAndUploadTestBeers(100);
+                Toast.makeText(getActivity(),"Se han subido 100",Toast.LENGTH_LONG).show();
+            }
+        });
 
         return view;
     }

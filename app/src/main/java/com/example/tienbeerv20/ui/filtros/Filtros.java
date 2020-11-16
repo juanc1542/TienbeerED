@@ -56,6 +56,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
     ArrayList<Cerveza> cervezasPrimerFiltro = new ArrayList<>();
 
     String datoSel;
+    private ArrayList<Cerveza> Parcelable;
     /*cuando se acciona cada uno de los botones antes de mandar la pantalla de filtros, modificará la
     funcionalidad "r" si viene de full random "a" si viene de 3&3*/
 
@@ -274,11 +275,12 @@ public class Filtros extends Fragment implements View.OnClickListener{
 
 
             SixPack newSix= sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,datoSel);
+
             Cerveza[] beer = newSix.getSixpack();
 
-            ArrayList<Cerveza> transpasoFragment=new ArrayList<>(6);
+            ArrayList<Cerveza> transpasoFragment= new ArrayList<>();
 
-
+            System.out.println(datoSel);
             /*
             ArrayList<String> transpasoFragment=new ArrayList<>(6);
 
@@ -291,16 +293,19 @@ public class Filtros extends Fragment implements View.OnClickListener{
             if(datoSel=="r") {
                 for (int i = 0; i < 6; i++) {
                     transpasoFragment.add(beer[i]);
+                    System.out.println(transpasoFragment.get(i).getNacionalidad());
                 }
-
                 SeleccionCervezas fragment = new SeleccionCervezas();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("key", transpasoFragment);
                 fragment.setArguments(bundle);
                 Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_seleccionCervezas, bundle);
+
+
             } else if(datoSel=="a"){
                 for (int i = 0; i < 3; i++) {
                     transpasoFragment.add(beer[i]);
+                    System.out.println(transpasoFragment.get(i).getNacionalidad());
                 }
 
                 SeleccionCervezas fragment = new SeleccionCervezas();
@@ -309,6 +314,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
                 fragment.setArguments(bundle);
                 Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_busqueda, bundle);
             }
+
         }
 
 
