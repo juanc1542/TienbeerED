@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.tienbeerv20.Data.Cerveza;
 import com.example.tienbeerv20.Data.Tests;
+import com.example.tienbeerv20.DataStructures.BinarySearchTree;
 import com.example.tienbeerv20.R;
 import com.example.tienbeerv20.ui.Recycler.AdaptadorDos;
 import com.example.tienbeerv20.ui.Recycler.AdaptadorUno;
@@ -31,10 +32,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+
 public class Busqueda extends Fragment implements View.OnClickListener{
 
     RecyclerView recyclerOP;
-    private ArrayList<Cerveza> ops1 = new ArrayList<Cerveza>();
+    private ArrayList<Cerveza> ops1 = new ArrayList<>();
 
     private BusquedaViewModel mViewModel;
     String seleccionBoton;
@@ -49,6 +51,10 @@ public class Busqueda extends Fragment implements View.OnClickListener{
 
     private String stringTextBusqueda;
 
+    private BinarySearchTree bst;
+
+    private ArrayList<Cerveza> Filtrado;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -58,8 +64,19 @@ public class Busqueda extends Fragment implements View.OnClickListener{
         recyclerOP.setLayoutManager(new LinearLayoutManager(getContext()));
         seleccionBoton= getArguments().getString("llave");
         ops1= (ArrayList<Cerveza>) getArguments().getSerializable("llaveArreglo");
+        for(Cerveza cerveza:ops1){
+            System.out.println(cerveza.getNombre());
+        }
         botonBuscar = (Button) v.findViewById(R.id.botonBuscar);
         editTextBusqueda =  (EditText) v.findViewById(R.id.editTextBusqueda);
+
+        bst = new BinarySearchTree();
+        for(Cerveza cerveza:ops1){
+            bst.insert(cerveza);
+        }
+        Toast.makeText(getActivity(), "Arbol creado", Toast.LENGTH_LONG).show();
+        System.out.println(bst.getRoot().getKey().getNombre());
+
         System.out.println(seleccionBoton);
 
         displayCervezas(v);
@@ -86,7 +103,10 @@ public class Busqueda extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         if(v.getId()==botonBuscar.getId()){
             stringTextBusqueda = editTextBusqueda.getText().toString();
-            Toast.makeText(getActivity(), stringTextBusqueda, Toast.LENGTH_LONG).show();
+
+            bst.search(bst.getRoot(), stringTextBusqueda);
+
+            Filtrado.add(bst.search(bst.getRoot(), stringTextBusqueda).getKey());
         }
     }
 

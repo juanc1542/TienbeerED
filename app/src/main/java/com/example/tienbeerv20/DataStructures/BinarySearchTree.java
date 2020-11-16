@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 public class BinarySearchTree {
 
-    static class Node {
+    static public class Node {
         // Atributos
         private Cerveza key;
         private Node left, right;
