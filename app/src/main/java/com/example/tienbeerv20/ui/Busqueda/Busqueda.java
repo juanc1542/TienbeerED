@@ -71,9 +71,7 @@ public class Busqueda extends Fragment implements View.OnClickListener{
         editTextBusqueda =  (EditText) v.findViewById(R.id.editTextBusqueda);
 
         bst = new BinarySearchTree();
-        for(Cerveza cerveza:ops1){
-            bst.insert(cerveza);
-        }
+        bst.llenar(ops1);
         Toast.makeText(getActivity(), "Arbol creado", Toast.LENGTH_LONG).show();
         System.out.println(bst.getRoot().getKey().getNombre());
 

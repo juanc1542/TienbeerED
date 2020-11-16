@@ -3,9 +3,10 @@ package com.example.tienbeerv20.DataStructures;
 import com.example.tienbeerv20.Data.Cerveza;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
-public class BinarySearchTree {
+public class BinarySearchTree{
 
     static public class Node {
         // Atributos
@@ -57,31 +58,31 @@ public class BinarySearchTree {
         this.root = root;
     }
 
-    // This method mainly calls insertRec()
-    public void insert(Cerveza key) {
-        root = insertRec(root, key);
+    //A function that constructs BST from array (sorted or not)
+    public Node llenar(ArrayList<Cerveza> cervezas){
+        Collections.sort(cervezas, Cerveza.cervezaNombreComparator);
+        return sortedArrayToBST(cervezas, 0, cervezas.size()-1);
     }
-
-    /* A recursive function to
-      insert a new key in BST */
-    private Node insertRec(Node root, Cerveza key) {
-        /* If the tree is empty,
-           return a new node */
-        if (root == null)
-        {
-            root = new Node(key);
-            return root;
+    /* A function that constructs Balanced Binary Search Tree
+     from a sorted array */
+    private Node sortedArrayToBST(ArrayList<Cerveza> cervezas, int start, int end) {
+        /* Base Case */
+        if (start > end) {
+            return null;
         }
+        /* Get the middle element and make it root */
+        int mid = (start + end) / 2;
+        Node node = new Node(cervezas.get(mid));
 
-        /* Otherwise, recur down the tree */
-        int comparator = root.getKey().getNombre().compareTo(key.getNombre());
-        if (comparator > 0)
-            root.setLeft(insertRec(root.getLeft(), key));
-        else if (comparator < 0)
-            root.setRight(insertRec(root.getRight(), key));
+        /* Recursively construct the left subtree and make it
+         left child of root */
+        node.left = sortedArrayToBST(cervezas, start, mid - 1);
 
-        /* return the (unchanged) node pointer */
-        return root;
+        /* Recursively construct the right subtree and make it
+         right child of root */
+        node.right = sortedArrayToBST(cervezas, mid + 1, end);
+
+        return node;
     }
 
 
@@ -102,11 +103,4 @@ public class BinarySearchTree {
         // Key is smaller than root's key
         return search(root.left, key);
     }
-
-//    Node llenar(ArrayList<Cerveza> arrayList){
-//        for (Cerveza cerveza : arrayList) {
-//            insert(cerveza);
-//        }
-//        return root;
-//    }
 }

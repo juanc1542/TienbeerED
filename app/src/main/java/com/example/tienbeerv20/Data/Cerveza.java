@@ -2,8 +2,9 @@ package com.example.tienbeerv20.Data;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
-public class Cerveza {
+public class Cerveza{
 
     private String nombre;
     private String nacionalidad;
@@ -84,4 +85,17 @@ public class Cerveza {
     }
     public int getCantidad() {return Cantidad;}
     public void setCantidad(int Cantidad){ this.Cantidad = Cantidad;}
+
+    public static Comparator<Cerveza> cervezaNombreComparator = new Comparator<Cerveza>() {
+
+        public int compare(Cerveza c1, Cerveza c2) {
+            String StudentName1 = c1.getNombre().toUpperCase();
+            String StudentName2 = c2.getNombre().toUpperCase();
+
+            //ascending order
+            return StudentName1.compareTo(StudentName2);
+
+            //descending order
+            //return StudentName2.compareTo(StudentName1);
+        }};
 }
