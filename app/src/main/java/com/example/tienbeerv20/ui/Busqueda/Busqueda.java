@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.example.tienbeerv20.Data.Cerveza;
 import com.example.tienbeerv20.R;
+import com.example.tienbeerv20.ui.Recycler.AdaptadorDos;
 import com.example.tienbeerv20.ui.Recycler.AdaptadorUno;
 
 import java.util.ArrayList;
@@ -55,14 +56,19 @@ public class Busqueda extends Fragment {
     }
 
     public void displayCervezas(View view){
-
-        Cerveza beer = new Cerveza("Poker","Colombiana",3000,"$$","Lager","Mas de 8",10);
-        Cerveza beer2 = new Cerveza("Aguila","Colombiana",3000,"$$","Lager","Mas de 8",10);
+        Cerveza beer = new Cerveza("Poker", "Colombiana", 3000, "$$", "Lager", "Mas de 8", 10);
+        Cerveza beer2 = new Cerveza("Aguila", "Colombiana", 3000, "$$", "Lager", "Mas de 8", 10);
 
         ops.add(beer);
         ops.add(beer2);
-        AdaptadorUno adapter= new AdaptadorUno(ops);
-        recyclerOP.setAdapter(adapter);
+
+        if(seleccionBoton.equals("GeneracionManual")){
+            AdaptadorUno adapter1 = new AdaptadorUno(ops);
+            recyclerOP.setAdapter(adapter1);
+        } if (seleccionBoton.equals("GeneracionAMedias")){
+            AdaptadorDos adapter2 = new AdaptadorDos(ops);
+            recyclerOP.setAdapter(adapter2);
+        }
     }
 
 }

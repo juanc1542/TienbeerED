@@ -54,9 +54,6 @@
         <action
             android:id="@+id/action_nav_filtro_to_seleccionCervezas"
             app:destination="@id/seleccionCervezas" />
-        <action
-            android:id="@+id/action_nav_filtro_to_busqueda"
-            app:destination="@id/busqueda" />
     </fragment>
     <fragment
         android:id="@+id/seleccionCervezas"
@@ -75,5 +72,8 @@
         <action
             android:id="@+id/action_busqueda_to_seleccionCervezas"
             app:destination="@id/seleccionCervezas" />
+        <action
+            android:id="@+id/action_busqueda_to_nav_filtro"
+            app:destination="@id/nav_filtro" />
     </fragment>
 </navigation>

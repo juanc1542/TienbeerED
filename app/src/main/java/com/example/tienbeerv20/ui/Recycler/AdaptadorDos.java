@@ -50,7 +50,7 @@ public class AdaptadorDos extends RecyclerView.Adapter<AdaptadorDos.ViewHolderCe
         holder.btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (seleccionados.size() <= 5){
+                if (seleccionados.size() <= 3){
                     seleccionados.add(listaCerveza.get(position));
                 Toast.makeText(v.getContext(), "Elegiste "+listaCerveza.get(position).getNombre()+", llevas "+seleccionados.size(), Toast.LENGTH_SHORT).show();
             } else {
@@ -58,7 +58,7 @@ public class AdaptadorDos extends RecyclerView.Adapter<AdaptadorDos.ViewHolderCe
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("key", seleccionados);
                     fragment.setArguments(bundle);
-                    Navigation.findNavController(v).navigate(R.id.action_busqueda_to_seleccionCervezas,bundle);
+                    Navigation.findNavController(v).navigate(R.id.action_busqueda_to_nav_filtro,bundle);
                 }
             }
         });

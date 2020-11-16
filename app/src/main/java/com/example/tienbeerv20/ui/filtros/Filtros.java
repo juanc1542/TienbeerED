@@ -312,7 +312,7 @@ public class Filtros extends Fragment implements View.OnClickListener{
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("key", transpasoFragment);
                 fragment.setArguments(bundle);
-                Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_busqueda, bundle);
+                Navigation.findNavController(v).navigate(R.id.action_nav_filtro_to_seleccionCervezas, bundle);
             }
 
         }
