@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/seleccionCervezas"
         android:name="com.example.tienbeerv20.ui.SeleccionCervezas.SeleccionCervezas"
-        android:label="fragment_seleccion_cervezas"
+        android:label="Tu Selección Final"
         tools:layout="@layout/fragment_seleccion_cervezas" >
         <action
             android:id="@+id/action_seleccionCervezas_to_nav_home"

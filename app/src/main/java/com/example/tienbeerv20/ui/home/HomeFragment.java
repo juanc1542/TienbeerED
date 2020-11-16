@@ -76,7 +76,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     ops.add(ds.getValue(Cerveza.class));
-                    System.out.println("AYUDAAAAA"+ops.get(0).getNacionalidad());
                     //Toast.makeText(getContext(), "Conexion Exitosa", Toast.LENGTH_SHORT).show();
                 }
 

@@ -1,6 +1,5 @@
 package com.example.tienbeerv20.ui.Recycler;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tienbeerv20.Data.Cerveza;
 import com.example.tienbeerv20.R;
 import com.example.tienbeerv20.ui.SeleccionCervezas.SeleccionCervezas;
-import com.example.tienbeerv20.ui.login.Logueo;
 
 import java.util.ArrayList;
 
