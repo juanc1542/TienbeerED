@@ -24,7 +24,7 @@ import com.example.tienbeerv20.DataStructures.BinarySearchTree;
 import com.example.tienbeerv20.R;
 import com.example.tienbeerv20.ui.Recycler.AdaptadorDos;
 import com.example.tienbeerv20.ui.Recycler.AdaptadorUno;
-import com.google.common.base.Stopwatch;
+// com.google.common.base.Stopwatch;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -73,11 +73,11 @@ public class Busqueda extends Fragment implements View.OnClickListener{
         editTextBusqueda =  (EditText) v.findViewById(R.id.editTextBusqueda);
 
         bst = new BinarySearchTree();
-        Stopwatch tiempoLlenar = Stopwatch.createStarted();
+        //Stopwatch tiempoLlenar = Stopwatch.createStarted();
 
         bst.llenar(ops1);
-        tiempoLlenar.stop();
-        System.out.println("Elapsed time in Nanoseconds for LLENAR() ==> " + tiempoLlenar.elapsed(TimeUnit.NANOSECONDS));
+        //tiempoLlenar.stop();
+        //System.out.println("Elapsed time in Nanoseconds for LLENAR() ==> " + tiempoLlenar.elapsed(TimeUnit.NANOSECONDS));
 
         Toast.makeText(getActivity(), "Arbol creado", Toast.LENGTH_LONG).show();
 
@@ -108,10 +108,10 @@ public class Busqueda extends Fragment implements View.OnClickListener{
         if(v.getId()==botonBuscar.getId()){
             stringTextBusqueda = editTextBusqueda.getText().toString();
 
-            Stopwatch tiempoBusqueda = Stopwatch.createStarted();
+            //Stopwatch tiempoBusqueda = Stopwatch.createStarted();
             Cerveza searchResult = bst.search(bst.getRoot(), stringTextBusqueda).getKey();
-            tiempoBusqueda.stop();
-            System.out.println("Elapsed time in Nanoseconds for SEARCH() ==> " + tiempoBusqueda.elapsed(TimeUnit.NANOSECONDS));
+            //tiempoBusqueda.stop();
+            //System.out.println("Elapsed time in Nanoseconds for SEARCH() ==> " + tiempoBusqueda.elapsed(TimeUnit.NANOSECONDS));
 
             Filtrado.add(searchResult);
             for(Cerveza cerveza:Filtrado){
