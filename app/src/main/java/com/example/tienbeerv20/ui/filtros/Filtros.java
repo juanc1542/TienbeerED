@@ -26,10 +26,13 @@ import android.widget.Toast;
 import com.example.tienbeerv20.Data.Cerveza;
 import com.example.tienbeerv20.Data.Filtro;
 import com.example.tienbeerv20.Data.SixPack;
+import com.example.tienbeerv20.Data.Tests;
 import com.example.tienbeerv20.DataStructures.DoublyLinkedList;
+import com.example.tienbeerv20.DataStructures.LinkedHashMap;
 import com.example.tienbeerv20.Logic.SixPackGenerator;
 import com.example.tienbeerv20.R;
 import com.example.tienbeerv20.ui.SeleccionCervezas.SeleccionCervezas;
+import com.google.common.base.Stopwatch;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +40,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Filtros extends Fragment implements View.OnClickListener{
 
@@ -82,7 +86,10 @@ public class Filtros extends Fragment implements View.OnClickListener{
             datoSel= getArguments().getString("keyxd2");
         }
 
-        cervezasBusqueda= (ArrayList<Cerveza>) getArguments().getSerializable("keyxd");
+        //cervezasBusqueda= (ArrayList<Cerveza>) getArguments().getSerializable("keyxd");
+        Tests test = new Tests();
+        cervezasBusqueda = test.generateTestBeers(100000);
+        System.out.println("Cervezas generadas.");
 
         Toast.makeText(getContext(), datoSel, Toast.LENGTH_SHORT).show();
 
@@ -276,15 +283,31 @@ public class Filtros extends Fragment implements View.OnClickListener{
                     break;
             }
             System.out.println(datoSel);
+
+            Stopwatch filtrofinal = Stopwatch.createStarted();
+
             Filtro filtroFinal= new Filtro(filtroF,repetidas);
 
+            filtrofinal.stop();
+            System.out.println("Elapsed time in Nanoseconds for Filtro Final () ==> " + filtrofinal.elapsed(TimeUnit.NANOSECONDS));
+
+
+            Stopwatch filter = Stopwatch.createStarted();
             SixPackGenerator sixPack= new SixPackGenerator();
             /* Cada botón debe darle valor a funcionalidad dependiendo si es 3&3 o full random*/
 
 
-            SixPack newSix= sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,datoSel);
 
-            Cerveza[] beer = newSix.getSixpack();
+
+            //SixPack newSix= sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,datoSel);
+
+            LinkedHashMap newSix = sixPack.generarSixpack(filtroFinal,cervezasPrimerFiltro,datoSel);
+
+            filter.stop();
+            System.out.println("Elapsed time in Nanoseconds for GenerarSixpack() ==> " + filter.elapsed(TimeUnit.NANOSECONDS));
+
+            Cerveza[] beer = newSix.MapToArray();
+
 
             ArrayList<Cerveza> transpasoFragment= new ArrayList<>();
 

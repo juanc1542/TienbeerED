@@ -89,7 +89,7 @@ public class AnadirFragment extends Fragment {
             public void onClick(View v) {
                 int cantidadSubida = Integer.parseInt(TextTest.getText().toString().trim());
                 Tests test = new Tests();
-                test.generateAndUploadTestBeers(cantidadSubida);
+                test.generateTestBeers(cantidadSubida);
                 Toast.makeText(getActivity(),"Se han subido "+cantidadSubida,Toast.LENGTH_LONG).show();
             }
         });

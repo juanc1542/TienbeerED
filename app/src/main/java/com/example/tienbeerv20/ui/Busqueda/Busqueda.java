@@ -22,9 +22,11 @@ import com.example.tienbeerv20.Data.Cerveza;
 import com.example.tienbeerv20.Data.Tests;
 import com.example.tienbeerv20.DataStructures.BinarySearchTree;
 import com.example.tienbeerv20.R;
+import com.example.tienbeerv20.ui.HashMaps.BusquedaHash;
 import com.example.tienbeerv20.ui.Recycler.AdaptadorDos;
 import com.example.tienbeerv20.ui.Recycler.AdaptadorUno;
 // com.google.common.base.Stopwatch;
+import com.google.common.base.Stopwatch;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 
@@ -55,6 +58,8 @@ public class Busqueda extends Fragment implements View.OnClickListener{
 
     private BinarySearchTree bst;
 
+    private BusquedaHash hsmap;
+
     private ArrayList<Cerveza> Filtrado = new ArrayList<Cerveza>();
 
     @Override
@@ -65,21 +70,32 @@ public class Busqueda extends Fragment implements View.OnClickListener{
         recyclerOP = (RecyclerView) v.findViewById(R.id.rvBusqueda);
         recyclerOP.setLayoutManager(new LinearLayoutManager(getContext()));
         seleccionBoton= getArguments().getString("llave");
-        ops1= (ArrayList<Cerveza>) getArguments().getSerializable("llaveArreglo");
-        for(Cerveza cerveza:ops1){
-            System.out.println(cerveza.getNombre());
-        }
+        //ops1= (ArrayList<Cerveza>) getArguments().getSerializable("llaveArreglo");
+        Tests test = new Tests();
+        ops1 = test.generateTestBeers(100000);
+
+        /*for(Cerveza cerveza:ops1){
+            System.out.println("Si hay cerveza: " +cerveza.getNombre());
+        }*/
+
+        System.out.println(ops1.size());
         botonBuscar = (Button) v.findViewById(R.id.botonBuscar);
         editTextBusqueda =  (EditText) v.findViewById(R.id.editTextBusqueda);
 
-        bst = new BinarySearchTree();
-        //Stopwatch tiempoLlenar = Stopwatch.createStarted();
+        //bst = new BinarySearchTree();
+        hsmap = new BusquedaHash();
+        Stopwatch tiempoLlenar = Stopwatch.createStarted();
 
-        bst.llenar(ops1);
-        //tiempoLlenar.stop();
-        //System.out.println("Elapsed time in Nanoseconds for LLENAR() ==> " + tiempoLlenar.elapsed(TimeUnit.NANOSECONDS));
+        //bst.llenar(ops1);
+        hsmap.llenar(ops1);
 
-        Toast.makeText(getActivity(), "Arbol creado", Toast.LENGTH_LONG).show();
+        tiempoLlenar.stop();
+        System.out.println("Elapsed time in Nanoseconds for LLENAR() ==> " + tiempoLlenar.elapsed(TimeUnit.NANOSECONDS));
+
+        System.out.println("El tamaño del array es de : " + ops1.size() + "<-----------------------");
+
+        //Toast.makeText(getActivity(), "Arbol creado", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Map creado", Toast.LENGTH_LONG).show();
 
         System.out.println(seleccionBoton);
 
@@ -108,15 +124,22 @@ public class Busqueda extends Fragment implements View.OnClickListener{
         if(v.getId()==botonBuscar.getId()){
             stringTextBusqueda = editTextBusqueda.getText().toString();
 
-            //Stopwatch tiempoBusqueda = Stopwatch.createStarted();
-            Cerveza searchResult = bst.search(bst.getRoot(), stringTextBusqueda).getKey();
-            //tiempoBusqueda.stop();
-            //System.out.println("Elapsed time in Nanoseconds for SEARCH() ==> " + tiempoBusqueda.elapsed(TimeUnit.NANOSECONDS));
+            Stopwatch tiempoBusqueda = Stopwatch.createStarted();
+            //Cerveza searchResult = bst.search(bst.getRoot(), stringTextBusqueda).getKey();
+            Cerveza searchResult = hsmap.buscar(stringTextBusqueda);
+
+            tiempoBusqueda.stop();
+            System.out.println("Elapsed time in Nanoseconds for SEARCH() ==> " + tiempoBusqueda.elapsed(TimeUnit.NANOSECONDS));
 
             Filtrado.add(searchResult);
+
+            //--------------------------------------------------------------------------------------
             for(Cerveza cerveza:Filtrado){
                 System.out.println(cerveza.getNombre());
             }
+            //--------------------------------------------------------------------------------------
+
+
         }
     }
 
